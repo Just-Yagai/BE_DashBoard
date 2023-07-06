@@ -10,6 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IMarcasService, MarcasService>();
+builder.Services.AddScoped<IContribuyentesService, ContribuyentesService>();
 
 var app = builder.Build();
 
