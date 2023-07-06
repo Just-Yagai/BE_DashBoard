@@ -16,9 +16,10 @@ namespace BE_DashBoard.Services
         }
 
         // Metodo Obtener Todos los Contribuyentes
-        public IEnumerable<Contribuyentes> GetContribuyentes()
+        public IEnumerable<Contribuyentes> GetContribuyentesByRnc(string rnc)
         {
-            return contribuyentes;
+            var response = contribuyentes.FindAll(data => data.rnc == rnc);
+            return response;
         }
     }
 }

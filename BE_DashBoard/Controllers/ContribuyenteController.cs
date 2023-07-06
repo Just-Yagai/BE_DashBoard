@@ -16,10 +16,15 @@ namespace BE_DashBoard.Controllers
         }
 
         [HttpGet]
-        [Route("ObtenerContribuyentes")]
-        public IEnumerable <Contribuyentes> Get()
+        [Route("ObtenerContribuyentesByRnc")]
+        public IActionResult Get(string rnc)
         {
-            return _contribuyentesService.GetContribuyentes();
+            var contribuyentesFiltrados = _contribuyentesService.GetContribuyentesByRnc(rnc);
+            if(contribuyentesFiltrados == null || !contribuyentesFiltrados.Any())
+            {
+                return NoContent();
+            }
+            return Ok(contribuyentesFiltrados);
         }
     }
 }
