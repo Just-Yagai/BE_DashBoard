@@ -12,6 +12,9 @@ builder.Services.AddSwaggerGen();
 // Servicios
 builder.Services.AddScoped<IMarcasService, MarcasService>();
 builder.Services.AddScoped<IContribuyentesService, ContribuyentesService>();
+builder.Services.AddScoped<ICanalService, CanalService>();
+
+
 
 var app = builder.Build();
 

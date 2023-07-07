@@ -6,6 +6,7 @@ namespace BE_DashBoard.Services
     public class ContribuyentesService : IContribuyentesService
     {
         private readonly List<Contribuyentes> contribuyentes;
+
         public ContribuyentesService()
         {
             contribuyentes = new List<Contribuyentes>();

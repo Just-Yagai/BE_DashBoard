@@ -224,23 +224,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rperezl\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\fpimenteld\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rperezl\\Documents\\Backend\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj",
+      "projectUniqueName": "C:\\Users\\fpimenteld\\Desktop\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj",
       "projectName": "BE_DashBoard",
-      "projectPath": "C:\\Users\\rperezl\\Documents\\Backend\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj",
-      "packagesPath": "C:\\Users\\rperezl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rperezl\\Documents\\Backend\\BE_DashBoard\\BE_DashBoard\\obj\\",
+      "projectPath": "C:\\Users\\fpimenteld\\Desktop\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj",
+      "packagesPath": "C:\\Users\\fpimenteld\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\fpimenteld\\Desktop\\BE_DashBoard\\BE_DashBoard\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\rperezl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\fpimenteld\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -283,24 +279,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.18, 6.0.18]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[6.0.18, 6.0.18]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.18, 6.0.18]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.18, 6.0.18]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"

@@ -25,7 +25,7 @@ namespace BE_DashBoard.Controllers
         }
 
         [HttpGet]
-        [Route("ObtenerMarcasBy/{rnc,AmbienteID,CanalID}")]
+        [Route("ObtenerMarcasBy")]
         public IActionResult Get(string rnc, int AmbienteID, int CanalID)
         {
             var marcasFiltradas = _marcasService.GetMarcasBy(rnc, AmbienteID, CanalID);

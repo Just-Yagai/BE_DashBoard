@@ -17,12 +17,9 @@ namespace BE_DashBoard.Services
         }
 
         // Metodo Obtener Todas las marcas
-        public IEnumerable<Marcas> GetMarcas()
+        public IEnumerable<Marcas> GetMarcas() 
         {
-            // string jsonFilePath = "Data/marcas.json";
-            // string jsonString = System.IO.File.ReadAllText(jsonFilePath);
 
-            // var marcas = JsonSerializer.Deserialize<IEnumerable<Marcas>>(jsonString);
             return marcas;
         }
 
@@ -40,7 +37,7 @@ namespace BE_DashBoard.Services
             
             if (marcaUpdate == null)
             {
-                return new NotFoundResult();
+                return new NoContentResult();
             }
 
             marcaUpdate.estado = updateMarcas.estado;
