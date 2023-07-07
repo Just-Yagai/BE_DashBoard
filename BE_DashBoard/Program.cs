@@ -13,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IMarcasService, MarcasService>();
 builder.Services.AddScoped<IContribuyentesService, ContribuyentesService>();
 builder.Services.AddScoped<ICanalService, CanalService>();
+builder.Services.AddScoped<IAmbienteService, AmbienteService>();
 
 
 
