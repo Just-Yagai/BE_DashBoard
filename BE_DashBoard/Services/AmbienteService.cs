@@ -1,4 +1,5 @@
-﻿using BE_DashBoard.Models;
+﻿using BE_DashBoard.Interfaces;
+using BE_DashBoard.Models;
 using System.Text.Json;
 
 namespace BE_DashBoard.Services

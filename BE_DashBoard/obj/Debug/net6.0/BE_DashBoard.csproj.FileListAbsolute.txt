@@ -69,3 +69,5 @@ C:\Users\fpimenteld\Desktop\BE_DashBoard\BE_DashBoard\obj\Debug\net6.0\ref\BE_Da
 C:\Users\fpimenteld\Desktop\BE_DashBoard\BE_DashBoard\bin\Debug\net6.0\Data\secuencias.json
 C:\Users\fpimenteld\Desktop\BE_DashBoard\BE_DashBoard\bin\Debug\net6.0\Data\ambiente.json
 C:\Users\fpimenteld\Desktop\BE_DashBoard\BE_DashBoard\bin\Debug\net6.0\Data\canal.json
+C:\Users\fpimenteld\Desktop\BE_DashBoard\BE_DashBoard\bin\Debug\net6.0\Data\delegaciones.json
+C:\Users\fpimenteld\Desktop\BE_DashBoard\BE_DashBoard\bin\Debug\net6.0\Data\rnc-estado.json

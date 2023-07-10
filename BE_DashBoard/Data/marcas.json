@@ -2,7 +2,7 @@
   {
     "rnc": "001",
     "tipo": "Facturador Electr\u00F3nico",
-    "estado": "Disponible",
+    "estado": "No disponible",
     "fecha_inicio_operacion": "2023/05/12",
     "AmbienteID": 1,
     "CanalID": 1

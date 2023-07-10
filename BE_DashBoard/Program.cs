@@ -1,3 +1,4 @@
+using BE_DashBoard.Interfaces;
 using BE_DashBoard.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,9 @@ builder.Services.AddScoped<IMarcasService, MarcasService>();
 builder.Services.AddScoped<IContribuyentesService, ContribuyentesService>();
 builder.Services.AddScoped<ICanalService, CanalService>();
 builder.Services.AddScoped<IAmbienteService, AmbienteService>();
+builder.Services.AddScoped<IDelegaciones, DelegacionesService>();
+builder.Services.AddScoped<ISecuencuasService, SecuenciasService>();
+builder.Services.AddScoped<IrncEstado,RncEstadosService>();
 
 
 
