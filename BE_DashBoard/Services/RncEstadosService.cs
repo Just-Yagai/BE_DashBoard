@@ -24,6 +24,8 @@ namespace BE_DashBoard.Services
             return rncEstado;
         }
 
+        //hola esto es prueba de branch
+
         public IEnumerable<RncEstado> GetRncEstadosBy(string rnc, int AmbienteID, int CanalID)
         {
             var response = rncEstado.FindAll(data => data.rnc == rnc && data.AmbienteID == AmbienteID && data.CanalID == CanalID);

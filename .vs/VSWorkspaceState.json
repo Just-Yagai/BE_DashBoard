@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\BE_DashBoard",
-    "\\BE_DashBoard\\Controllers",
-    "\\BE_DashBoard\\Services"
+    "\\BE_DashBoard"
   ],
-  "SelectedNode": "\\BE_DashBoard\\Program.cs",
+  "SelectedNode": "\\BE_DashBoard.sln",
   "PreviewInSolutionExplorer": false
 }
