@@ -24,7 +24,7 @@ namespace BE_DashBoard.Services
             return rncEstado;
         }
 
-        //hola esto es prueba de branch
+        //hola esto es prueba de branch2 ya tu sabe.
 
         public IEnumerable<RncEstado> GetRncEstadosBy(string rnc, int AmbienteID, int CanalID)
         {
