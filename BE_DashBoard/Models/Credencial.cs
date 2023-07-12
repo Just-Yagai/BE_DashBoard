@@ -9,7 +9,7 @@
 
         public static List<Credencial> DB()
         {
-            var list = new List<Credencial>();
+            var list = new List<Credencial>()
             {
                 new Credencial
                 {
@@ -18,9 +18,7 @@
                     password = "123.",
                     rol = "empleado"
 
-                };
-
-
+                },
                 new Credencial
                 {
                     idusuario = "2",
@@ -28,8 +26,8 @@
                     password = "123.",
                     rol = "administrador"
 
-                };
-            }
+                },
+            };
             return list;
         }
     }

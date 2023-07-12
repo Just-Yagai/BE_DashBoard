@@ -18,6 +18,8 @@ namespace BE_DashBoard.Controllers
         {
             _configuration = configuration;
         }
+        [HttpPost]
+        [Route("login")]
         public dynamic IniciarSesion([FromBody] object optData)
         {
             var data = JsonConvert.DeserializeObject<dynamic>(optData.ToString());
