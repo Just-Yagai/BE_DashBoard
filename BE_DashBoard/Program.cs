@@ -16,7 +16,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Dashboard Contribuyente" });
 
-    /*c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "Jwt Authorization",
         Name = "Authorization",
@@ -38,7 +38,7 @@ builder.Services.AddSwaggerGen(c =>
             },
             new string[]{}
         }
-    });*/
+    });
 });
 
 // Servicios
@@ -83,9 +83,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.UseCors(policy =>

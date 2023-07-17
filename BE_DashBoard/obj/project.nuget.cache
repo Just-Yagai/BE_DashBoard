@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hUW1JYSvgw35frlqGeTF7I2L019IgzehXUMdw9ZXvpeficBtP8i4rmbWc2tGtJtB/kNxSPOYg4hV15vbTPdjcw==",
+  "dgSpecHash": "zHpSlNCKuGoFp0jLEjzHp338srT/Zu7CUqAEt8JBlpNuM+UF4gsHfU5G1CUey2GZ6bOi9Vadto6cUw+tsxH7Xw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Romer Perez\\Desktop\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj",
   "expectedPackageFiles": [
@@ -40,12 +40,5 @@
     "C:\\Users\\Romer Perez\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\Romer Perez\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché C:\\Users\\Romer Perez\\Desktop\\BE_DashBoard\\BE_DashBoard\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

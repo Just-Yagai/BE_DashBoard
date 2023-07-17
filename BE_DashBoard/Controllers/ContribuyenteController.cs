@@ -18,41 +18,7 @@ namespace BE_DashBoard.Controllers
         }
 
         [HttpGet]
-        [Route("Comporbando Permisos")]
         [Authorize]
-
-        public dynamic permiso(Contribuyentes contribuyentes)
-        {
-            var identity = HttpContext.User.Identity as ClaimsIdentity;
-
-            var rToken = Jwt.ValidarToken(identity);
-
-            if(!rToken.success)
-                return rToken;
-
-            Credencial credencial = rToken.result;
-
-            if(credencial.rol != "administrador")
-            {
-                return new
-                {
-                    success = false,
-                    message = "no tienes permiso",
-                    result = ""
-                };
-            }
-
-            return new
-                {
-                success = true,
-                    message = "tienes permiso",
-                    result = ""
-                };
-        }
-
-        // probando prueba con merge
-        
-        [HttpGet]
         [Route("ObtenerContribuyentesByRnc")]
           public IActionResult Get(string rnc)
           {
