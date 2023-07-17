@@ -1,5 +1,6 @@
 ﻿using BE_DashBoard.Interfaces;
 using BE_DashBoard.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace BE_DashBoard.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("ObtenerCanal")]
         public IEnumerable<Canal> Get()
         {

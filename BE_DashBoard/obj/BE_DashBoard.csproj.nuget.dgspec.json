@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Romer Perez\\Desktop\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj": {}
+    "C:\\Users\\fpimenteld\\Desktop\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Romer Perez\\Desktop\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj": {
+    "C:\\Users\\fpimenteld\\Desktop\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Romer Perez\\Desktop\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj",
+        "projectUniqueName": "C:\\Users\\fpimenteld\\Desktop\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj",
         "projectName": "BE_DashBoard",
-        "projectPath": "C:\\Users\\Romer Perez\\Desktop\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj",
-        "packagesPath": "C:\\Users\\Romer Perez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Romer Perez\\Desktop\\BE_DashBoard\\BE_DashBoard\\obj\\",
+        "projectPath": "C:\\Users\\fpimenteld\\Desktop\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj",
+        "packagesPath": "C:\\Users\\fpimenteld\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\fpimenteld\\Desktop\\BE_DashBoard\\BE_DashBoard\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Romer Perez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\fpimenteld\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -83,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }
