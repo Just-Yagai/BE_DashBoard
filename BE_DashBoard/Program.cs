@@ -1,6 +1,7 @@
 using BE_DashBoard.Interfaces;
 using BE_DashBoard.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -8,8 +9,11 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(new AuthorizeFilter());
+});
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -42,6 +46,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // Servicios
+builder.Services.AddScoped<ICredenciales, CredencialesServices>();
 builder.Services.AddScoped<IMarcasService, MarcasService>();
 builder.Services.AddScoped<IContribuyentesService, ContribuyentesService>();
 builder.Services.AddScoped<ICanalService, CanalService>();
@@ -49,6 +54,7 @@ builder.Services.AddScoped<IAmbienteService, AmbienteService>();
 builder.Services.AddScoped<IDelegaciones, DelegacionesService>();
 builder.Services.AddScoped<ISecuencuasService, SecuenciasService>();
 builder.Services.AddScoped<IrncEstado,RncEstadosService>();
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
@@ -63,13 +69,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
 });
-
-/*builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("AdministradorOnly", policy =>
-        policy.RequireRole("administrador"));
-});*/
-
 
 var app = builder.Build();
 

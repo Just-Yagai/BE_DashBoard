@@ -1,10 +1,17 @@
 [
   {
-    "usuario": "pedro",
-    "clave": "1234"
+    "Username": "pedro",
+    "Password": "123",
+    "Rol": "Administrador"
   },
   {
-    "usuario": "juan",
-    "clave": "1234567"
+    "Username": "juan",
+    "Password": "123",
+    "Rol": "Empleado"
+  },
+  {
+    "Username": "manolo",
+    "Password": "123",
+    "Rol": "Administrador"
   }
 ]

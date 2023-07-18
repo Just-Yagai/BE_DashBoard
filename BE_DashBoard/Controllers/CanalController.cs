@@ -18,7 +18,7 @@ namespace BE_DashBoard.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         [Route("ObtenerCanal")]
         public IEnumerable<Canal> Get()
         {

@@ -18,7 +18,6 @@ namespace BE_DashBoard.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         [Route("ObtenerContribuyentesByRnc")]
           public IActionResult Get(string rnc)
           {

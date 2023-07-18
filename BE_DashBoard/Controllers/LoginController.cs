@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BE_DashBoard.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using PB_Dashboard.Constant;
@@ -11,13 +13,16 @@ namespace PB_Dashboard.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class LoginController : ControllerBase
     {
         private readonly IConfiguration _configuration;
+        private readonly ICredenciales _credencialesServices;
 
-        public LoginController(IConfiguration configuration) 
+        public LoginController(IConfiguration configuration, ICredenciales credenciales) 
         {
             _configuration = configuration;
+            _credencialesServices = credenciales;
         }
 
         [HttpPost]
@@ -32,12 +37,14 @@ namespace PB_Dashboard.Controllers
                 return Ok(token);  
             }
 
+            // return 401 authorized
             return NotFound("Usuario no encontrado");
         }
 
+        // mover para services credenciales el metodo de Authenticate
         private UsersModel Authenticate(LoginUser userLogin)
         {
-            var currentUser = UserConstant.Users.FirstOrDefault( user => 
+            var currentUser = _credencialesServices.GetUsers().FirstOrDefault( user => 
                 user.Username.ToLower() == userLogin.Username.ToLower() &&
                 user.Password == userLogin.Password );
 
@@ -49,6 +56,7 @@ namespace PB_Dashboard.Controllers
             return null;
         }
 
+        // agregar a un servicio y utilizar la manera que se implemento anteriormente el jwt
         private string Generate(UsersModel usuarios)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -58,7 +66,7 @@ namespace PB_Dashboard.Controllers
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, usuarios.Username),
-                new Claim(ClaimTypes.Role, usuarios.Rol)
+               // new Claim(ClaimTypes.Role, usuarios.Rol)
             };
 
             // Crear Token
