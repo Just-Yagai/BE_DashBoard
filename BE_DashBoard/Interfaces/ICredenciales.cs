@@ -4,6 +4,7 @@ namespace BE_DashBoard.Interfaces
 {
     public interface ICredenciales
     {
-        IEnumerable<UsersModel>GetUsers();
+        IEnumerable<LoginUser> GetUsers();
+        IEnumerable<LoginUser>GetAutentication(string username, string password);   
     }
 }

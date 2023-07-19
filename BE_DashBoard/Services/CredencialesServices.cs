@@ -8,19 +8,25 @@ namespace BE_DashBoard.Services
     public class CredencialesServices : ICredenciales
     {
 
-        private readonly List<UsersModel> user;
+        private readonly List<LoginUser> user;
         public CredencialesServices()
         {
-            user = new List<UsersModel>();
+            user = new List<LoginUser>();
 
             string jsonFilePath = "Data/autenticacion.json";
             string jsonString = System.IO.File.ReadAllText(jsonFilePath);
-            user = JsonSerializer.Deserialize<List<UsersModel>>(jsonString);
+            user = JsonSerializer.Deserialize<List<LoginUser>>(jsonString);
         }
 
-        public IEnumerable<UsersModel> GetUsers()
+        public IEnumerable<LoginUser> GetUsers()
         {
             return user;
+        }
+
+        public IEnumerable<LoginUser> GetAutentication(string username, string password)
+        {
+           var response = user.FindAll(data => data.Username == username && data.Password == password);
+            return response;
         }
     }
 }

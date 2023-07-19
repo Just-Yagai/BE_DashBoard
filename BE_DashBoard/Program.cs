@@ -46,7 +46,6 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // Servicios
-builder.Services.AddScoped<ICredenciales, CredencialesServices>();
 builder.Services.AddScoped<IMarcasService, MarcasService>();
 builder.Services.AddScoped<IContribuyentesService, ContribuyentesService>();
 builder.Services.AddScoped<ICanalService, CanalService>();
@@ -54,6 +53,8 @@ builder.Services.AddScoped<IAmbienteService, AmbienteService>();
 builder.Services.AddScoped<IDelegaciones, DelegacionesService>();
 builder.Services.AddScoped<ISecuencuasService, SecuenciasService>();
 builder.Services.AddScoped<IrncEstado,RncEstadosService>();
+builder.Services.AddScoped<ICredenciales, CredencialesServices>();
+builder.Services.AddScoped<IToken, TokenServices>();
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
