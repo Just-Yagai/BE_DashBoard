@@ -38,7 +38,7 @@ namespace PB_Dashboard.Controllers
             }
 
             // return 401 authorized
-            return NotFound("Usuario no encontrado");
+            return Unauthorized();
         }
 
         // mover para services credenciales el metodo de Authenticate
