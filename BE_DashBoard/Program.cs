@@ -1,4 +1,5 @@
 using BE_DashBoard.Interfaces;
+using BE_DashBoard.Models;
 using BE_DashBoard.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -56,6 +57,8 @@ builder.Services.AddScoped<IrncEstado,RncEstadosService>();
 builder.Services.AddScoped<ICredenciales, CredencialesServices>();
 builder.Services.AddScoped<IToken, TokenServices>();
 
+var jwt = builder.Configuration.GetSection("Jwt").Get<Jwt>();
+builder.Services.AddSingleton(jwt);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
