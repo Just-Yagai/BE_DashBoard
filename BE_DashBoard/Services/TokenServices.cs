@@ -9,18 +9,15 @@ using System.Text;
 namespace BE_DashBoard.Services
 {
     public class TokenServices : IToken
-    {
-        private readonly IConfiguration _configuration;
-        
+    {      
         private readonly Jwt _jwt;
         public Jwt Jwt => _jwt;
-        public TokenServices(IConfiguration configuration, Jwt jwt)
+        public TokenServices( Jwt jwt)
         {
-            _configuration = configuration;
             _jwt = jwt;
         }
 
-        public IEnumerable<string> GenerateToken(LoginUser AutenticacionFiltrada)
+        public string GenerateToken(LoginUser _loginUser)
         {
            // var jwt = _configuration.GetSection("Jwt").Get<Jwt>();
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Jwt.Key));
@@ -30,8 +27,8 @@ namespace BE_DashBoard.Services
             {
             new Claim(JwtRegisteredClaimNames.Aud, Jwt.Audience),
             new Claim(JwtRegisteredClaimNames.Iss, Jwt.Issuer),
-            new Claim(ClaimTypes.NameIdentifier, AutenticacionFiltrada.Username)
-        };
+            new Claim(ClaimTypes.NameIdentifier, _loginUser.Username)
+            };
 
             var token = new JwtSecurityToken(
                 Jwt.Issuer,
@@ -40,7 +37,8 @@ namespace BE_DashBoard.Services
                 expires: DateTime.Now.AddMinutes(60),
                 signingCredentials: credentials);
 
-            yield return new JwtSecurityTokenHandler().WriteToken(token);
+            //yield return new JwtSecurityTokenHandler().WriteToken(token);
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }

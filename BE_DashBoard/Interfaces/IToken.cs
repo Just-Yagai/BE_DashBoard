@@ -4,6 +4,6 @@ namespace BE_DashBoard.Interfaces
 {
     public interface IToken
     {
-        public IEnumerable<string> GenerateToken(LoginUser AutenticacionFiltrada);
+        public string GenerateToken(LoginUser _loginUser);
     }
 }
