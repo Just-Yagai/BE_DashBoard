@@ -17,7 +17,6 @@ namespace BE_DashBoard.Services
             contribuyentes = JsonSerializer.Deserialize<List<Contribuyentes>>(jsonString);
         }
 
-        // Metodo Obtener Todos los Contribuyentes
         public IEnumerable<Contribuyentes> GetContribuyentesByRnc(string rnc)
         {
             var response = contribuyentes.FindAll(data => data.rnc == rnc);

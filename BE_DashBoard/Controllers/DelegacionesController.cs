@@ -1,5 +1,6 @@
 ﻿using BE_DashBoard.Interfaces;
 using BE_DashBoard.Models;
+using BE_DashBoard.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,6 +35,13 @@ namespace BE_DashBoard.Controllers
             }
             return Ok(delegacionesFiltradas);
         }
+        [HttpPut]
+        [Route("ActualizarDelegaciones/{rnc}")]
+        public IActionResult Put(string rnc, [FromBody] Delegaciones updateDelegaciones)
+        {
+            IActionResult resultado = _delegacioensService.UpdateDelegaciones(rnc, updateDelegaciones);
 
+            return resultado;
+        }
     }
 }

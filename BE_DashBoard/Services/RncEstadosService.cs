@@ -1,5 +1,6 @@
 ﻿using BE_DashBoard.Interfaces;
 using BE_DashBoard.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
 namespace BE_DashBoard.Services
@@ -28,6 +29,28 @@ namespace BE_DashBoard.Services
         {
             var response = rncEstado.FindAll(data => data.rnc == rnc && data.AmbienteID == AmbienteID && data.CanalID == CanalID);
             return response;
+        }
+
+        public IActionResult UpdaterncEstado(string rnc, RncEstado updaterncEstado)
+        {
+            var rncEstadoUpdate = rncEstado.FirstOrDefault(data => data.rnc == rnc);
+
+            if (rncEstadoUpdate == null)
+            {
+                return new NoContentResult();
+            }
+
+            rncEstadoUpdate.estado = updaterncEstado.estado;
+            rncEstadoUpdate.autorizadoAFacturar = updaterncEstado.autorizadoAFacturar;
+            rncEstadoUpdate.autorizadoSolicitarSecuencia = updaterncEstado.autorizadoSolicitarSecuencia;
+            rncEstadoUpdate.esGrandeContribuyente = updaterncEstado.esGrandeContribuyente;
+            
+
+            string jsonFilePath = "Data/rnc-estado.json";
+            string jsonString = JsonSerializer.Serialize(rncEstado);
+            System.IO.File.WriteAllText(jsonFilePath, jsonString);
+
+            return new OkResult();
         }
     }
 }

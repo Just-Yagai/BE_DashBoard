@@ -17,24 +17,19 @@ namespace BE_DashBoard.Services
             marcas = JsonSerializer.Deserialize<List<Marcas>>(jsonString);
         }
 
-        // Metodo Obtener Todas las marcas
         public IEnumerable<Marcas> GetMarcas() 
         {
-
             return marcas;
         }
 
-        // Metodo Obtener por RNC, AmbienteID , CanalID
         public IEnumerable <Marcas> GetMarcasBy(string rnc, int AmbienteID, int CanalID) 
         {
             var response = marcas.FindAll(data => data.rnc == rnc && data.AmbienteID == AmbienteID && data.CanalID == CanalID);
             return response;
         }
 
-        // Metodo Actualizar Marcas Por Estado
         public IActionResult UpdateMarcas(string rnc, [FromBody]Marcas updateMarcas)
         {
-            // Generar una clave de búsqueda única combinando el RNC y el tipo
             string claveBusqueda = rnc + "" + updateMarcas.tipo;
 
             var marcaUpdate = marcas.FirstOrDefault(data => (data.rnc + "" + data.tipo) == claveBusqueda);
@@ -46,7 +41,6 @@ namespace BE_DashBoard.Services
 
             marcaUpdate.estado = updateMarcas.estado;
 
-            // Guardar la lista actualizada en el archivo JSON o en la fuente de datos
             string jsonFilePath = "Data/marcas.json";
             string jsonString = JsonSerializer.Serialize(marcas);
             System.IO.File.WriteAllText(jsonFilePath, jsonString);

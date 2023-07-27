@@ -1,10 +1,25 @@
 [
   {
     "rnc": "001",
-    "estado": "",
-    "autorizadoAFacturar": null,
-    "autorizadoSolicitarSecuencia": null,
-    "esGrandeContribuyente": null,
+    "estado": "Activo",
+    "autorizadoAFacturar": "\u2713",
+    "autorizadoSolicitarSecuencia": "X",
+    "esGrandeContribuyente": "\u2713",
+    "identificacion": "4028889253",
+    "fechaRegistro": "05/09/2023",
+    "fechaActualizacion": "23/09/2025",
+    "AmbienteID": 1,
+    "CanalID": 1
+  },
+  {
+    "rnc": "002",
+    "estado": "Activo",
+    "autorizadoAFacturar": "\u2713",
+    "autorizadoSolicitarSecuencia": "\u2713",
+    "esGrandeContribuyente": "\u2713",
+    "identificacion": "40212599777",
+    "fechaRegistro": "19/05/2023",
+    "fechaActualizacion": "23/09/2025",
     "AmbienteID": 1,
     "CanalID": 1
   }

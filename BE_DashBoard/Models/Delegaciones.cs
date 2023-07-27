@@ -5,10 +5,10 @@
 
 
         public string rnc { get; set; }
-        public bool? firmanteAutorizado { get; set; }  
-        public bool? solicitanteAutorizado { get; set; }
-        public bool? aprobadorComercial { get; set; }
-        public bool? administrador { get; set; }
+        public string firmanteAutorizado { get; set; }  
+        public string solicitanteAutorizado { get; set; }
+        public string aprobadorComercial { get; set; }
+        public string administrador { get; set; }
         public string estado { get; set; }
         public string identificacion { get; set; }
         public string fechaRegistro { get; set; }
