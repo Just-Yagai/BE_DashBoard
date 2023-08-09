@@ -2,7 +2,7 @@
 
 namespace BE_DashBoard.Interfaces
 {
-    public interface IToken
+    public interface ITokenService
     {
         public string GenerateToken(LoginUser _loginUser);
     }

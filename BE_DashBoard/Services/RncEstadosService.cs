@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace BE_DashBoard.Services
 {
-    public class RncEstadosService: IrncEstado
+    public class RncEstadosService: IrncEstadoService
     {
 
         public readonly List<RncEstado> rncEstado;

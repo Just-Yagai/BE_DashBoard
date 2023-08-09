@@ -38,7 +38,7 @@ namespace BE_DashBoard.Controllers
 
         [HttpPut]
         [Route("ActualizarMarcas/{rnc}")]
-        public IActionResult Put(string rnc, [FromBody] Marcas updateMarcas)
+        public IActionResult Put(string rnc, [FromBody]Marcas updateMarcas)
         {
             IActionResult resultado = _marcasService.UpdateMarcas(rnc, updateMarcas);
 

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BE_DashBoard.Interfaces
 {
-    public interface IrncEstado
+    public interface IrncEstadoService
     {
         public IEnumerable<RncEstado> GetRncEstados();
         public IEnumerable<RncEstado> GetRncEstadosBy(string rnc, int AmbienteID, int CanalID);

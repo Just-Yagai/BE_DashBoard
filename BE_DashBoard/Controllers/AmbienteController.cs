@@ -16,6 +16,7 @@ namespace BE_DashBoard.Controllers
             _AmbienteService = ambienteService;
         }
 
+        //[Obsolete]
         [HttpGet]
         [Route("ObtenerCanal")]
         public IEnumerable<Ambiente> Get()

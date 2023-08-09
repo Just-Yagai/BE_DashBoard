@@ -10,8 +10,8 @@ namespace PB_Dashboard.Controllers
     public class LoginController : ControllerBase
     {      
         private readonly ICredenciales _credencialesServices;
-        private readonly IToken _tokenService;
-        public LoginController( ICredenciales credenciales, IToken token) 
+        private readonly ITokenService _tokenService;
+        public LoginController( ICredenciales credenciales, ITokenService token) 
         {      
             _credencialesServices = credenciales;
             _tokenService = token;

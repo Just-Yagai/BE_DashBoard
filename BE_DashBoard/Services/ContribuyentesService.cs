@@ -6,18 +6,18 @@ namespace BE_DashBoard.Services
 {
     public class ContribuyentesService : IContribuyentesService
     {
-        private readonly List<Contribuyentes> contribuyentes;
+        private readonly List<Contribuyente> contribuyentes;
 
         public ContribuyentesService()
         {
-            contribuyentes = new List<Contribuyentes>();
+            contribuyentes = new List<Contribuyente>();
 
             string jsonFilePath = "Data/contribuyentes.json";
             string jsonString = System.IO.File.ReadAllText(jsonFilePath);
-            contribuyentes = JsonSerializer.Deserialize<List<Contribuyentes>>(jsonString);
+            contribuyentes = JsonSerializer.Deserialize<List<Contribuyente>>(jsonString);
         }
 
-        public IEnumerable<Contribuyentes> GetContribuyentesByRnc(string rnc)
+        public IEnumerable<Contribuyente> GetContribuyentesByRnc(string rnc)
         {
             var response = contribuyentes.FindAll(data => data.rnc == rnc);
             return response;

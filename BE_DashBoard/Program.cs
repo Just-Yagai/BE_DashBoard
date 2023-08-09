@@ -53,9 +53,9 @@ builder.Services.AddScoped<ICanalService, CanalService>();
 builder.Services.AddScoped<IAmbienteService, AmbienteService>();
 builder.Services.AddScoped<IDelegaciones, DelegacionesService>();
 builder.Services.AddScoped<ISecuencuasService, SecuenciasService>();
-builder.Services.AddScoped<IrncEstado,RncEstadosService>();
+builder.Services.AddScoped<IrncEstadoService,RncEstadosService>();
 builder.Services.AddScoped<ICredenciales, CredencialesServices>();
-builder.Services.AddScoped<IToken, TokenServices>();
+builder.Services.AddScoped<ITokenService, TokenServices>();
 
 var jwt = builder.Configuration.GetSection("Jwt").Get<Jwt>();
 builder.Services.AddSingleton(jwt);

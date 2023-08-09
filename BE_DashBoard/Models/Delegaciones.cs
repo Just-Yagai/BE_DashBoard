@@ -1,6 +1,6 @@
 ﻿namespace BE_DashBoard.Models
 {
-    public class Delegaciones
+    public class Delegacion
     {
 
 
@@ -12,7 +12,7 @@
         public string estado { get; set; }
         public string identificacion { get; set; }
         public string fechaRegistro { get; set; }
-        public string fechaActualizacion { get; set;}
+        public string FechaActualizacion { get; set;}
         public int AmbienteID { get; set; }
         public int CanalID { get; set; }
 

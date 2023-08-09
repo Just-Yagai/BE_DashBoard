@@ -2,8 +2,8 @@
   {
     "rnc": "001",
     "firmanteAutorizado": "\u2713",
-    "solicitanteAutorizado": "X",
-    "aprobadorComercial": "X",
+    "solicitanteAutorizado": "\u2713",
+    "aprobadorComercial": "\u2713",
     "administrador": "\u2713",
     "estado": "Activo",
     "identificacion": "40212599253",

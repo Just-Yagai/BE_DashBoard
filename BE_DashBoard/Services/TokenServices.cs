@@ -8,7 +8,7 @@ using System.Text;
 
 namespace BE_DashBoard.Services
 {
-    public class TokenServices : IToken
+    public class TokenServices : ITokenService
     {      
         private readonly Jwt _jwt;
         public Jwt Jwt => _jwt;

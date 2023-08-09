@@ -1,12 +1,15 @@
 ﻿namespace BE_DashBoard.Models
 {
-    public class Contribuyentes
+    /// <summary>
+    /// 
+    /// </summary>
+    public class Contribuyente
     {
         public string rnc { get; set; }
         public string razonSocial { get; set; }
-        public List<tipo_certificacion> tipo_certificacion { get; set; }
+        public List<TipoCertificacion> tipo_certificacion { get; set; }
     }
-    public class tipo_certificacion
+    public class TipoCertificacion
     {
         public string tipo { get; set; }
         public string estado { get; set; }

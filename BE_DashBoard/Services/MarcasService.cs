@@ -28,7 +28,7 @@ namespace BE_DashBoard.Services
             return response;
         }
 
-        public IActionResult UpdateMarcas(string rnc, [FromBody]Marcas updateMarcas)
+        public IActionResult UpdateMarcas(string rnc, Marcas updateMarcas)
         {
             string claveBusqueda = rnc + "" + updateMarcas.tipo;
 

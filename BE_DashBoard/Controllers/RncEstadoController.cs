@@ -10,9 +10,9 @@ namespace BE_DashBoard.Controllers
     [ApiController]
     public class RncEstadoController : ControllerBase
     {
-        public readonly IrncEstado _rncEstado;
+        public readonly IrncEstadoService _rncEstado;
 
-        public RncEstadoController(IrncEstado rncEstado)
+        public RncEstadoController(IrncEstadoService rncEstado)
         {
             _rncEstado = rncEstado;
         }

@@ -1,10 +1,10 @@
 [
   {
     "rnc": "001",
-    "estado": "Activo",
+    "estado": "Inactivo",
     "autorizadoAFacturar": "\u2713",
     "autorizadoSolicitarSecuencia": "X",
-    "esGrandeContribuyente": "\u2713",
+    "esGrandeContribuyente": "X",
     "identificacion": "4028889253",
     "fechaRegistro": "05/09/2023",
     "fechaActualizacion": "23/09/2025",

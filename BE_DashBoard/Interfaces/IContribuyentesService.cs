@@ -4,6 +4,6 @@ namespace BE_DashBoard.Interfaces
 {
     public interface IContribuyentesService
     {
-        IEnumerable<Contribuyentes> GetContribuyentesByRnc(string rnc);
+        IEnumerable<Contribuyente> GetContribuyentesByRnc(string rnc);
     }
 }

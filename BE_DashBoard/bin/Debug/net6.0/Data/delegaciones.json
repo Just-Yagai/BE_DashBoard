@@ -1,11 +1,11 @@
 [
   {
     "rnc": "001",
-    "firmanteAutorizado": "X",
-    "solicitanteAutorizado": "X",
-    "aprobadorComercial": "X",
-    "administrador": "X",
-    "estado": "Inactivo",
+    "firmanteAutorizado": "\u2713",
+    "solicitanteAutorizado": "\u2713",
+    "aprobadorComercial": "\u2713",
+    "administrador": "\u2713",
+    "estado": "Activo",
     "identificacion": "40212599253",
     "fechaRegistro": "15/01/2023",
     "fechaActualizacion": "23/09/2025",

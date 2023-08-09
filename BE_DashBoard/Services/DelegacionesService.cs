@@ -7,30 +7,30 @@ namespace BE_DashBoard.Services
 {
     public class DelegacionesService : IDelegaciones
     {
-        public readonly List<Delegaciones> delegaciones;
+        public readonly List<Delegacion> delegaciones;
 
         public DelegacionesService()
         {
-            delegaciones = new List<Delegaciones>();
+            delegaciones = new List<Delegacion>();
 
             string jsonFilePath = "Data/delegaciones.json";
             string jsonString = System.IO.File.ReadAllText(jsonFilePath);
-            delegaciones = JsonSerializer.Deserialize<List<Delegaciones>>(jsonString);
+            delegaciones = JsonSerializer.Deserialize<List<Delegacion>>(jsonString);
 
         }
 
-        public IEnumerable<Delegaciones> GetDelegaciones()
+        public IEnumerable<Delegacion> GetDelegaciones()
         {
             return delegaciones;
         }
 
-        public IEnumerable<Delegaciones> GetDelegacionesBy(string rnc, int AmbienteID, int CanalID)
+        public IEnumerable<Delegacion> GetDelegacionesBy(string rnc, int AmbienteID, int CanalID)
         {
             var response = delegaciones.FindAll(data => data.rnc == rnc && data.AmbienteID == AmbienteID && data.CanalID == CanalID);
             return response;
         }
 
-        public IActionResult UpdateDelegaciones(string rnc, [FromBody]Delegaciones updateDelegaciones)
+        public IActionResult UpdateDelegaciones(string rnc, Delegacion updateDelegaciones)
             {
                 var DelegacionesUpdate = delegaciones.FirstOrDefault(data => data.rnc == rnc);
 
