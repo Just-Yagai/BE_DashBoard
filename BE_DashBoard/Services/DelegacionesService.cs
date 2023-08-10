@@ -5,51 +5,47 @@ using System.Text.Json;
 
 namespace BE_DashBoard.Services
 {
-    public class DelegacionesService : IDelegaciones
+    public class DelegacionesService : IDelegacionesService
     {
-        public readonly List<Delegacion> delegaciones;
+        private readonly IPruebaRepositorio _pruebarepositorio;
 
-        public DelegacionesService()
+        public DelegacionesService(IPruebaRepositorio pruebaRepositorio)
         {
-            delegaciones = new List<Delegacion>();
-
-            string jsonFilePath = "Data/delegaciones.json";
-            string jsonString = System.IO.File.ReadAllText(jsonFilePath);
-            delegaciones = JsonSerializer.Deserialize<List<Delegacion>>(jsonString);
-
+            _pruebarepositorio = pruebaRepositorio;
         }
-
-        public IEnumerable<Delegacion> GetDelegaciones()
+  
+        public async Task <IEnumerable<Delegacion>> GetDelegaciones()
         {
-            return delegaciones;
+            var lista  =  await _pruebarepositorio.GetDelegaciones();
+            return lista;
         }
 
-        public IEnumerable<Delegacion> GetDelegacionesBy(string rnc, int AmbienteID, int CanalID)
-        {
-            var response = delegaciones.FindAll(data => data.rnc == rnc && data.AmbienteID == AmbienteID && data.CanalID == CanalID);
-            return response;
-        }
+        /* public IEnumerable<Delegacion> GetDelegacionesBy(string rnc, int AmbienteID, int CanalID)
+         {
+             var response = delegaciones.FindAll(data => data.Rnc == rnc && data.AmbienteID == AmbienteID && data.CanalID == CanalID);
+             return response;
+         }
 
-        public IActionResult UpdateDelegaciones(string rnc, Delegacion updateDelegaciones)
-            {
-                var DelegacionesUpdate = delegaciones.FirstOrDefault(data => data.rnc == rnc);
+         public IActionResult UpdateDelegaciones(string rnc, Delegacion updateDelegaciones)
+             {
+                 var DelegacionesUpdate = delegaciones.FirstOrDefault(data => data.Rnc == rnc);
 
-                if (DelegacionesUpdate == null)
-                {
-                    return new NoContentResult();
-                }
+                 if (DelegacionesUpdate == null)
+                 {
+                     return new NoContentResult();
+                 }
 
-            DelegacionesUpdate.firmanteAutorizado = updateDelegaciones.firmanteAutorizado;
-            DelegacionesUpdate.solicitanteAutorizado = updateDelegaciones.solicitanteAutorizado;
-            DelegacionesUpdate.aprobadorComercial = updateDelegaciones.aprobadorComercial;
-            DelegacionesUpdate.administrador = updateDelegaciones.administrador;
-            DelegacionesUpdate.estado = updateDelegaciones.estado;
+             DelegacionesUpdate.FirmanteAutorizado = updateDelegaciones.FirmanteAutorizado;
+             DelegacionesUpdate.SolicitanteAutorizado = updateDelegaciones.SolicitanteAutorizado;
+             DelegacionesUpdate.AprobadorComercial = updateDelegaciones.AprobadorComercial;
+             DelegacionesUpdate.Administrador = updateDelegaciones.Administrador;
+             DelegacionesUpdate.Estado = updateDelegaciones.Estado;
 
-                string jsonFilePath = "Data/delegaciones.json";
-                string jsonString = JsonSerializer.Serialize(delegaciones);
-                System.IO.File.WriteAllText(jsonFilePath, jsonString);
+                 string jsonFilePath = "Data/delegaciones.json";
+                 string jsonString = JsonSerializer.Serialize(delegaciones);
+                 System.IO.File.WriteAllText(jsonFilePath, jsonString);
 
-                return new OkResult();
-            }
-        }
+                 return new OkResult();
+             }*/
+    }
 }

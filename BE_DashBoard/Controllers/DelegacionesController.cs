@@ -1,8 +1,11 @@
-﻿using BE_DashBoard.Interfaces;
+﻿/*using BE_DashBoard.Context;
+using BE_DashBoard.Interfaces;
 using BE_DashBoard.Models;
 using BE_DashBoard.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 
 namespace BE_DashBoard.Controllers
 {
@@ -11,13 +14,15 @@ namespace BE_DashBoard.Controllers
     public class DelegacionesController : ControllerBase
     {
         private readonly IDelegaciones _delegacioensService;
+        private readonly AplicacionDbContext _dbcontext;
 
-        public DelegacionesController(IDelegaciones delegacionesService)
+        public DelegacionesController(IDelegaciones delegacionesService, AplicacionDbContext context)
         {
             _delegacioensService = delegacionesService;
+            _dbcontext = context;
         }
 
-        [HttpGet]
+       [HttpGet]
         [Route("ObtenerDelegaciones")]
         public IEnumerable<Delegacion> Get()
         {
@@ -45,3 +50,4 @@ namespace BE_DashBoard.Controllers
         }
     }
 }
+*/

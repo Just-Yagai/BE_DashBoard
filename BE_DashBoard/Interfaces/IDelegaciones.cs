@@ -1,4 +1,4 @@
-﻿using BE_DashBoard.Models;
+﻿/*using BE_DashBoard.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BE_DashBoard.Interfaces
@@ -10,3 +10,4 @@ namespace BE_DashBoard.Interfaces
         IActionResult UpdateDelegaciones(string rnc, Delegacion updateDelegaciones);
     }
 }
+*/

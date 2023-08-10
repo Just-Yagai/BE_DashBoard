@@ -1,8 +1,11 @@
+using BE_DashBoard.Context;
 using BE_DashBoard.Interfaces;
 using BE_DashBoard.Models;
+using BE_DashBoard.Repositorio;
 using BE_DashBoard.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -46,12 +49,24 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+//add context
+builder.Services.AddDbContext<AplicacionDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("conexion"));
+});
+
+
+
 // Servicios
 builder.Services.AddScoped<IMarcasService, MarcasService>();
 builder.Services.AddScoped<IContribuyentesService, ContribuyentesService>();
 builder.Services.AddScoped<ICanalService, CanalService>();
 builder.Services.AddScoped<IAmbienteService, AmbienteService>();
-builder.Services.AddScoped<IDelegaciones, DelegacionesService>();
+
+//Repositorio
+builder.Services.AddScoped<IPruebaRepositorio, PruebaRepositorio>();
+
+builder.Services.AddScoped<IDelegacionesService, DelegacionesService>();
 builder.Services.AddScoped<ISecuencuasService, SecuenciasService>();
 builder.Services.AddScoped<IrncEstadoService,RncEstadosService>();
 builder.Services.AddScoped<ICredenciales, CredencialesServices>();
