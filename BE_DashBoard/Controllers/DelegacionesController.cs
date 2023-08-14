@@ -24,7 +24,7 @@ namespace BE_DashBoard.Controllers
 
        [HttpGet]
         [Route("ObtenerDelegaciones")]
-        public IEnumerable<Delegacion> Get()
+        public IEnumerable<Delegaciones> Get()
         {
             return _delegacioensService.GetDelegaciones();
         }
@@ -42,7 +42,7 @@ namespace BE_DashBoard.Controllers
         }
         [HttpPut]
         [Route("ActualizarDelegaciones/{rnc}")]
-        public IActionResult Put(string rnc, [FromBody] Delegacion updateDelegaciones)
+        public IActionResult Put(string rnc, [FromBody] Delegaciones updateDelegaciones)
         {
             IActionResult resultado = _delegacioensService.UpdateDelegaciones(rnc, updateDelegaciones);
 

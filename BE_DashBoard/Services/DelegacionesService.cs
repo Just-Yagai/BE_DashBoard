@@ -20,13 +20,13 @@ namespace BE_DashBoard.Services
             return lista;
         }
 
-        /* public IEnumerable<Delegacion> GetDelegacionesBy(string rnc, int AmbienteID, int CanalID)
+        /* public IEnumerable<Delegaciones> GetDelegacionesBy(string rnc, int AmbienteID, int CanalID)
          {
              var response = delegaciones.FindAll(data => data.Rnc == rnc && data.AmbienteID == AmbienteID && data.CanalID == CanalID);
              return response;
          }
 
-         public IActionResult UpdateDelegaciones(string rnc, Delegacion updateDelegaciones)
+         public IActionResult UpdateDelegaciones(string rnc, Delegaciones updateDelegaciones)
              {
                  var DelegacionesUpdate = delegaciones.FirstOrDefault(data => data.Rnc == rnc);
 

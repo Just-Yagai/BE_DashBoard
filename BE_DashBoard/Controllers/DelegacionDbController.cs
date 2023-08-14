@@ -9,17 +9,17 @@ namespace BE_DashBoard.Controllers
     [ApiController]
     public class DelegacionDbController : ControllerBase
     {
-        private readonly IDelegacionesService _delegacion;
+        private readonly IDelegacionesService _delegacionservices;
         public DelegacionDbController(IDelegacionesService delegacion )
         {
-            _delegacion = delegacion;
+            _delegacionservices = delegacion;
         }
 
         [HttpGet]
         [Route("ObtenerDelegacionesDb")]
         public async Task<IActionResult> GetDelegacioniones()
         {
-                var lisdelegaciones = await _delegacion.GetDelegaciones();
+                var lisdelegaciones = await _delegacionservices.GetDelegaciones();
                 return Ok(lisdelegaciones);
         }
     }

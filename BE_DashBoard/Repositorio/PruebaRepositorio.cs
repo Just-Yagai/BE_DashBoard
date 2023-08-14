@@ -16,7 +16,7 @@ namespace BE_DashBoard.Repositorio
 
         public async Task<IEnumerable<Delegacion>> GetDelegaciones()
         {
-            var ListarDatos = await _dbcontext.Delegacion.ToListAsync();
+            var ListarDatos = await _dbcontext.Delegaciones.AsNoTracking().ToListAsync();
             return ListarDatos;
         }
     }
