@@ -3,6 +3,7 @@ using BE_DashBoard.Interfaces;
 using BE_DashBoard.Models;
 using BE_DashBoard.Repositorio;
 using BE_DashBoard.Services;
+using BE_DashBoard.UnitOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -50,27 +51,28 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 //add context
-builder.Services.AddDbContext<AplicacionDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("conexion"));
-});
+builder.Services.AddDbContext<AplicacionDbContext>(options => { options.UseSqlServer(builder.Configuration.GetConnectionString("conexion"));}, ServiceLifetime.Scoped);
+//add context
+builder.Services.AddDbContext<AplicacionDbContextBlue>(options =>{options.UseSqlServer(builder.Configuration.GetConnectionString("conexionblue"));}, ServiceLifetime.Scoped);
 
 
 
 // Servicios
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IMarcasService, MarcasService>();
 builder.Services.AddScoped<IContribuyentesService, ContribuyentesService>();
 builder.Services.AddScoped<ICanalService, CanalService>();
 builder.Services.AddScoped<IAmbienteService, AmbienteService>();
-
-//Repositorio
-builder.Services.AddScoped<IPruebaRepositorio, PruebaRepositorio>();
-
-builder.Services.AddScoped<IDelegacionesService, DelegacionesService>();
+//builder.Services.AddScoped<IDelegacionesServiceBlue, DelegacionesServiceBlue>();
+//builder.Services.AddScoped<IDelegacionesService, DelegacionesService>();
 builder.Services.AddScoped<ISecuencuasService, SecuenciasService>();
-builder.Services.AddScoped<IrncEstadoService,RncEstadosService>();
+builder.Services.AddScoped<IrncEstadoService, RncEstadosService>();
 builder.Services.AddScoped<ICredenciales, CredencialesServices>();
 builder.Services.AddScoped<ITokenService, TokenServices>();
+builder.Services.AddScoped<IConexionDelegacionesServices, ConexionDelegaciones>();
+//Repositorio
+//builder.Services.AddScoped<IPruebaRepositorio, PruebaRepositorio>();
+//builder.Services.AddScoped<IPruebaRepositorio, PruebaRepositorioBlue>();
 
 var jwt = builder.Configuration.GetSection("Jwt").Get<Jwt>();
 builder.Services.AddSingleton(jwt);

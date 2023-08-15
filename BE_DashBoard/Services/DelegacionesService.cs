@@ -1,24 +1,31 @@
 ﻿using BE_DashBoard.Interfaces;
 using BE_DashBoard.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
 
 namespace BE_DashBoard.Services
 {
     public class DelegacionesService : IDelegacionesService
     {
         private readonly IPruebaRepositorio _pruebarepositorio;
+      //  private readonly IPruebaRepositorioBlue _pruebaRepositorioBlue;
 
-        public DelegacionesService(IPruebaRepositorio pruebaRepositorio)
+        public DelegacionesService()
         {
-            _pruebarepositorio = pruebaRepositorio;
+            //_pruebarepositorio = pruebaRepositorio;
+            //_pruebaRepositorioBlue = pruebaRepositorioBlue;
         }
   
         public async Task <IEnumerable<Delegacion>> GetDelegaciones()
         {
-            var lista  =  await _pruebarepositorio.GetDelegaciones();
-            return lista;
+            //var lista  =  await _pruebarepositorio.GetDelegaciones();
+            //return lista;
+            return null;
         }
+
+       /* public async Task<IEnumerable<Delegacion>> GetDelegacionesBlue()
+        {
+            var lista2 = await _pruebaRepositorioBlue.GetDelegaciones();
+            return lista2;
+        }*/
 
         /* public IEnumerable<Delegaciones> GetDelegacionesBy(string rnc, int AmbienteID, int CanalID)
          {

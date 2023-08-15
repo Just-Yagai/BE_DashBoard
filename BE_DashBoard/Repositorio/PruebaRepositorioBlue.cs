@@ -6,19 +6,19 @@ using System.Linq.Expressions;
 
 namespace BE_DashBoard.Repositorio
 {
-    public class PruebaRepositorio : IPruebaRepositorio
+    public class PruebaRepositorioBlue : IPruebaRepositorio
     {
-        private readonly AplicacionDbContext _dbcontext;
-    
-        public PruebaRepositorio(AplicacionDbContext context)
-        {
-            _dbcontext = context;
-        }
+        private readonly AplicacionDbContextBlue _dbcontextblue;
 
+        public PruebaRepositorioBlue(AplicacionDbContextBlue dbcontextblue)
+        {
+            this._dbcontextblue = dbcontextblue;
+        }
         public async Task<IEnumerable<Delegacion>> GetDelegaciones(Expression<Func<Delegacion, bool>> expresion)
         {
-            var ListarDatos = await _dbcontext.Delegaciones.Where(expresion).AsNoTracking().ToListAsync();
+            var ListarDatos = await _dbcontextblue.Delegaciones.Where(expresion).AsNoTracking().ToListAsync();
             return ListarDatos;
         }
     }
 }
+

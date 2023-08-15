@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace BE_DashBoard.Interfaces
 {
-    public interface IPruebaRepositorio
+    public interface IPruebaRepositorioBlue
     {
         Task<IEnumerable<Delegacion>> GetDelegaciones(Expression<Func<Delegacion, bool>> expresion);
     }

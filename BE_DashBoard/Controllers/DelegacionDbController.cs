@@ -1,7 +1,6 @@
 ﻿using BE_DashBoard.Interfaces;
 using BE_DashBoard.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BE_DashBoard.Controllers
 {
@@ -9,19 +8,21 @@ namespace BE_DashBoard.Controllers
     [ApiController]
     public class DelegacionDbController : ControllerBase
     {
-        private readonly IDelegacionesService _delegacionservices;
-        public DelegacionDbController(IDelegacionesService delegacion )
+        private readonly IConexionDelegacionesServices _conexiondelegacionservices;
+        public DelegacionDbController(IConexionDelegacionesServices conexionDelegacionesServices  )
         {
-            _delegacionservices = delegacion;
+            _conexiondelegacionservices = conexionDelegacionesServices;
         }
 
         [HttpGet]
-        [Route("ObtenerDelegacionesDb")]
-        public async Task<IActionResult> GetDelegacioniones()
+        [Route("ObtenerDelegaciones")]
+        public async Task<IActionResult> GetDelegaciones(int ambiente, string rnc, int canal)
         {
-                var lisdelegaciones = await _delegacionservices.GetDelegaciones();
-                return Ok(lisdelegaciones);
+            var delegaciones = await _conexiondelegacionservices.GetDelegaciones((DbType)ambiente, rnc, canal);
+            return Ok(delegaciones);
         }
+
+
     }
 }
 

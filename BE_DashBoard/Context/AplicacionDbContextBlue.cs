@@ -3,11 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BE_DashBoard.Context
 {
-    public class AplicacionDbContext: DbContext
+    public class AplicacionDbContextBlue : DbContext
     {
-
-
-        public AplicacionDbContext(DbContextOptions<AplicacionDbContext> options)
+        public AplicacionDbContextBlue(DbContextOptions<AplicacionDbContextBlue> options)
         : base(options)
         {
 

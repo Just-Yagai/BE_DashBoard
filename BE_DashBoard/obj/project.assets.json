@@ -6811,19 +6811,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
+    "C:\\Users\\fpimenteld\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\OneDrive\\Escritorio\\prueba en angular\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj",
+      "projectUniqueName": "C:\\Users\\fpimenteld\\Desktop\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj",
       "projectName": "BE_DashBoard",
-      "projectPath": "C:\\Users\\Usuario\\OneDrive\\Escritorio\\prueba en angular\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\OneDrive\\Escritorio\\prueba en angular\\BE_DashBoard\\BE_DashBoard\\obj\\",
+      "projectPath": "C:\\Users\\fpimenteld\\Desktop\\BE_DashBoard\\BE_DashBoard\\BE_DashBoard.csproj",
+      "packagesPath": "C:\\Users\\fpimenteld\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\fpimenteld\\Desktop\\BE_DashBoard\\BE_DashBoard\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\fpimenteld\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
