@@ -20,5 +20,7 @@ namespace BE_DashBoard.Repositorio
             var ListarDatos = await _dbcontext.Delegaciones.Where(expresion).AsNoTracking().ToListAsync();
             return ListarDatos;
         }
+
+       
     }
 }

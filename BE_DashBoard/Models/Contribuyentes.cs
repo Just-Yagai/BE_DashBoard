@@ -5,15 +5,21 @@
     /// </summary>
     public class Contribuyente
     {
-        public string rnc { get; set; }
-        public string razonSocial { get; set; }
-        public List<TipoCertificacion> tipo_certificacion { get; set; }
+        public int Id { get; set; }
+        public string RNC { get; set; }
+        public string RazonSocial { get; set; }
+
+        public ICollection<TipoCertificacion> TiposCertificacion { get; set; }
     }
     public class TipoCertificacion
     {
-        public string tipo { get; set; }
-        public string estado { get; set; }
-        public string inicio_postulacion { get; set; }
-        public string finalizacion_postulacion { get; set; }
+        public int Id { get; set; }
+        public int ContribuyenteId { get; set; }
+        public string Tipo { get; set; }
+        public string Estado { get; set; }
+        public string InicioPostulacion { get; set; }
+        public string FinalizacionPostulacion { get; set; }
+
+        public Contribuyente Contribuyente { get; set; }
     }
 }

@@ -1,26 +1,29 @@
 ﻿using BE_DashBoard.Interfaces;
 using BE_DashBoard.Models;
+using BE_DashBoard.UnitOfWork;
 using System.Text.Json;
 
 namespace BE_DashBoard.Services
 {
-    public class ContribuyentesService : IContribuyentesService
+    public class ContribuyentesService : IConexionContribuyenteService
     {
-        private readonly List<Contribuyente> contribuyentes;
+        private readonly IContribuyentesService _contribuyenteRepositorio;
 
-        public ContribuyentesService()
+        public ContribuyentesService(IContribuyentesService contribuyenteRepositorio)
         {
-            contribuyentes = new List<Contribuyente>();
-
-            string jsonFilePath = "Data/contribuyentes.json";
-            string jsonString = System.IO.File.ReadAllText(jsonFilePath);
-            contribuyentes = JsonSerializer.Deserialize<List<Contribuyente>>(jsonString);
+            _contribuyenteRepositorio = contribuyenteRepositorio;   
         }
-
-        public IEnumerable<Contribuyente> GetContribuyentesByRnc(string rnc)
+        public Task<IEnumerable<Contribuyente>> GetContribuyente(string rnc)
         {
-            var response = contribuyentes.FindAll(data => data.rnc == rnc);
+            var response = _contribuyenteRepositorio.GetContribuyente(a => a.RNC == rnc);
             return response;
+
         }
+
+        public IQueryable<Contribuyente> GetAllContribuyentes()
+        {
+            return _contribuyenteRepositorio.GetAllContribuyentes();
+        }
+
     }
 }

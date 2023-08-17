@@ -60,7 +60,7 @@ builder.Services.AddDbContext<AplicacionDbContextBlue>(options =>{options.UseSql
 // Servicios
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IMarcasService, MarcasService>();
-builder.Services.AddScoped<IContribuyentesService, ContribuyentesService>();
+builder.Services.AddScoped<IContribuyentesService, ContribuyenteRepositorio>();
 builder.Services.AddScoped<ICanalService, CanalService>();
 builder.Services.AddScoped<IAmbienteService, AmbienteService>();
 //builder.Services.AddScoped<IDelegacionesServiceBlue, DelegacionesServiceBlue>();
@@ -70,6 +70,7 @@ builder.Services.AddScoped<IrncEstadoService, RncEstadosService>();
 builder.Services.AddScoped<ICredenciales, CredencialesServices>();
 builder.Services.AddScoped<ITokenService, TokenServices>();
 builder.Services.AddScoped<IConexionDelegacionesServices, ConexionDelegaciones>();
+builder.Services.AddScoped<IConexionContribuyenteService, ContribuyentesService>();
 //Repositorio
 //builder.Services.AddScoped<IPruebaRepositorio, PruebaRepositorio>();
 //builder.Services.AddScoped<IPruebaRepositorio, PruebaRepositorioBlue>();

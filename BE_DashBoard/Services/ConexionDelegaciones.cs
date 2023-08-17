@@ -20,13 +20,13 @@ namespace BE_DashBoard.Services
                 case DbType.Produccion:
                     return await this._unitOfWork.PruebaRepositorio.GetDelegaciones(a => a.Rnc == rnc && a.CanalID == canal);
                 case DbType.PreCertificacion:
-                    return await this._unitOfWork.PruebaRepositorioBlue.GetDelegaciones(a => a.Rnc == rnc && a.CanalID == canal);
+                    return await this._unitOfWork.PruebaRepositorioBlue.GetDelegaciones(a => a.Rnc == rnc && a.CanalID == canal );
                 default:
-                    return await this._unitOfWork.PruebaRepositorioBlue.GetDelegaciones(a => a.Rnc == rnc && a.CanalID == canal);
+                    return await this._unitOfWork.PruebaRepositorio.GetDelegaciones(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
             }
         }
 
-        public Task<IEnumerable<Delegacion>> GetDelegaciones(int ambiente, string rnc, int canal)
+       public Task<IEnumerable<Delegacion>> GetDelegaciones(int ambiente, string rnc, int canal)
         {
             throw new NotImplementedException();
         }
