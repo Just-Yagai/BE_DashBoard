@@ -19,6 +19,29 @@ namespace BE_DashBoard.Repositorio
             var ListarDatos = await _dbcontextblue.Delegaciones.Where(expresion).AsNoTracking().ToListAsync();
             return ListarDatos;
         }
+
+        public async Task<IEnumerable<Secuencias>> Getsecuencia(Expression<Func<Secuencias, bool>> expresion)
+        {
+            var ListarDatos = await _dbcontextblue.Secuencias.Where(expresion).AsNoTracking().ToListAsync();
+            return ListarDatos;
+        }
+
+        public async Task<IEnumerable<RncEstado>> GetRncEstado(Expression<Func<RncEstado, bool>> expresion)
+        {
+            var ListarDatos = await _dbcontextblue.RncEstados.Where(expresion).AsNoTracking().ToListAsync();
+            return ListarDatos;
+        }
+
+        public async Task<IEnumerable<Contribuyente>> GetContribuyente(Expression<Func<Contribuyente, bool>> expresion)
+        {
+            var ListarDatos = await _dbcontextblue.Contribuyente.Include(c => c.TiposCertificacion).Where(expresion).AsNoTracking().ToListAsync();
+            return ListarDatos;
+        }
+
+        public IQueryable<Contribuyente> GetAllContribuyentes()
+        {
+            return _dbcontextblue.Contribuyente.Include(c => c.TiposCertificacion);
+        }
     }
 }
 

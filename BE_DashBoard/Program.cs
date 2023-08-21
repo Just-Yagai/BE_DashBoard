@@ -60,7 +60,7 @@ builder.Services.AddDbContext<AplicacionDbContextBlue>(options =>{options.UseSql
 // Servicios
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IMarcasService, MarcasService>();
-builder.Services.AddScoped<IContribuyentesService, ContribuyenteRepositorio>();
+//builder.Services.AddScoped<IContribuyentesService, ContribuyentesService>();
 builder.Services.AddScoped<ICanalService, CanalService>();
 builder.Services.AddScoped<IAmbienteService, AmbienteService>();
 //builder.Services.AddScoped<IDelegacionesServiceBlue, DelegacionesServiceBlue>();

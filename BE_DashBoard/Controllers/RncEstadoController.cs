@@ -3,6 +3,7 @@ using BE_DashBoard.Models;
 using BE_DashBoard.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static BE_DashBoard.Services.RncEstadosService;
 
 namespace BE_DashBoard.Controllers
 {
@@ -10,44 +11,18 @@ namespace BE_DashBoard.Controllers
     [ApiController]
     public class RncEstadoController : ControllerBase
     {
-        public readonly IrncEstadoService _rncEstado;
-
-        public RncEstadoController(IrncEstadoService rncEstado)
+        private readonly IrncEstadoService _rncestadoservice;
+        public RncEstadoController(IrncEstadoService rncestadoservice)
         {
-            _rncEstado = rncEstado;
+            _rncestadoservice = rncestadoservice;
         }
 
         [HttpGet]
-        [Route("GetRncEstado")]
-
-        public IEnumerable<RncEstado> Get()
+        [Route("ObtenerRncEstado")]
+        public async Task<IActionResult> GetSecuencia(int ambiente, string rnc, int CanalID)
         {
-            return _rncEstado.GetRncEstados();
-
-        }
-
-        [HttpGet]
-        [Route("GetRncEstadoBy")]
-
-        public IActionResult Get(string rnc, int AmbienteID, int CanalID)
-        {
-            {
-                var FiltadoRncEstado = _rncEstado.GetRncEstadosBy(rnc, AmbienteID,CanalID);
-                if(FiltadoRncEstado == null | !FiltadoRncEstado.Any())
-                {
-                    return NoContent();
-                }
-                return Ok(FiltadoRncEstado);
-            }
-        }
-
-        [HttpPut]
-        [Route("ActualizarDelegaciones/{rnc}")]
-        public IActionResult Put(string rnc, [FromBody] RncEstado updaterncEstado)
-        {
-            IActionResult resultado = _rncEstado.UpdaterncEstado(rnc, updaterncEstado);
-
-            return resultado;
+            var secuencia = await _rncestadoservice.GetRncEstado((DbType2)ambiente, rnc, CanalID);
+            return Ok(secuencia);
         }
     }
 }

@@ -2,16 +2,17 @@
 {
     public class Secuencias
     {
-        public string rnc { get; set; }
-        public string e_CF { get; set; }
-        public string secuenciaDesde { get; set; }
-        public string secuenciaHasta { get; set; }
-        public string nroAutorizacion { get; set; }
-        public string estado { get; set; }
-        public string realizadoEmision { get; set; }
-        public string fechaRegistro2 { get; set; }
-        public string fechaDesde { get; set; }
-        public string fechaHasta { get; set; }
+        public int Id { get; set; }
+        public string Rnc { get; set; }
+        public string e_cf { get; set; }
+        public string SecuenciaDesde { get; set; }
+        public string SecuenciaHasta { get; set; }
+        public string NroAutorizacion { get; set; }
+        public string Estado { get; set; }
+        public string RealizadoEmision { get; set; }
+        public string FechaRegistro2 { get; set; }
+        public string FechaDesde { get; set; }
+        public string FechaHasta { get; set; }
         public int AmbienteID { get; set; }
         public int CanalID { get; set; }
         public int TipoECF { get; set; }

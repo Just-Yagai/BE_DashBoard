@@ -13,14 +13,14 @@ namespace BE_DashBoard.Controllers
     [ApiController]
     public class ContribuyenteController : ControllerBase
     {
-        private readonly IConexionContribuyenteService _conexionContribuyenteService;
+       private readonly IConexionContribuyenteService _conexionContribuyenteService;
         public ContribuyenteController(IConexionContribuyenteService conexionContribuyenteService)
         {
             _conexionContribuyenteService = conexionContribuyenteService;
         }
 
         [HttpGet]
-        [Route("ObtenerDelegaciones")]
+        [Route("ObtenerContribuyente")]
         public async Task<IActionResult> GetContribuyente( string rnc)
         {
             var contribuyentes = await _conexionContribuyenteService.GetContribuyente(rnc);

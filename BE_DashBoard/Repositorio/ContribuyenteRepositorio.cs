@@ -1,4 +1,4 @@
-﻿using BE_DashBoard.Context;
+﻿/*using BE_DashBoard.Context;
 using BE_DashBoard.Interfaces;
 using BE_DashBoard.Models;
 using Microsoft.EntityFrameworkCore;
@@ -18,13 +18,14 @@ namespace BE_DashBoard.Repositorio
 
         public async Task<IEnumerable<Contribuyente>> GetContribuyente(Expression<Func<Contribuyente, bool>> expresion)
         {
-            var ListarDatos = await _dbcontext.Contribuyentes.Where(expresion).AsNoTracking().ToListAsync();
+            var ListarDatos = await _dbcontext.Contribuyente.Where(expresion).AsNoTracking().ToListAsync();
             return ListarDatos;
         }
 
         public IQueryable<Contribuyente> GetAllContribuyentes()
         {
-            return _dbcontext.Contribuyentes.Include(c => c.TiposCertificacion);
+            return _dbcontext.Contribuyente.Include(c => c.TiposCertificacion);
         }
     }
 }
+*/

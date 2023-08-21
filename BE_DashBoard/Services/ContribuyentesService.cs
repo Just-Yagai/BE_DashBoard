@@ -7,7 +7,26 @@ namespace BE_DashBoard.Services
 {
     public class ContribuyentesService : IConexionContribuyenteService
     {
-        private readonly IContribuyentesService _contribuyenteRepositorio;
+        private readonly IUnitOfWork _unitOfWork;
+
+        public ContribuyentesService(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+        public Task<IEnumerable<Contribuyente>> GetContribuyente(string rnc)
+        {
+            var response = _unitOfWork.PruebaRepositorioBlue.GetContribuyente(a => a.RNC == rnc);
+            return response;
+
+        }
+
+        public IQueryable<Contribuyente> GetAllContribuyentes()
+        {
+            return _unitOfWork.PruebaRepositorioBlue.GetAllContribuyentes();
+        }
+
+
+        /*private readonly IContribuyentesService _contribuyenteRepositorio;
 
         public ContribuyentesService(IContribuyentesService contribuyenteRepositorio)
         {
@@ -23,7 +42,7 @@ namespace BE_DashBoard.Services
         public IQueryable<Contribuyente> GetAllContribuyentes()
         {
             return _contribuyenteRepositorio.GetAllContribuyentes();
-        }
+        }*/
 
     }
 }

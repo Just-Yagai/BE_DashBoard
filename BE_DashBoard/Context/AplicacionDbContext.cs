@@ -13,8 +13,10 @@ namespace BE_DashBoard.Context
 
         }
         public DbSet<Delegacion> Delegaciones { get; set; }
-        public DbSet<Contribuyente> Contribuyentes { get; set; }
+        public DbSet<Contribuyente> Contribuyente { get; set; }
         public DbSet<TipoCertificacion> TipoCertificacion { get; set; }
+        public DbSet<Secuencias> Secuencias { get; set; }
+        public DbSet<RncEstado> RncEstados { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

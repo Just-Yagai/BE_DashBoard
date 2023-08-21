@@ -5,30 +5,33 @@ using System.Text.Json;
 namespace BE_DashBoard.Services
 {
     public class SecuenciasService : ISecuencuasService
+
     {
+        private readonly IUnitOfWork _unitOfWork;
 
-        public readonly List<Secuencias> Secuencias;
-
-        public SecuenciasService()
+        public SecuenciasService(IUnitOfWork unitOfWork)
         {
-            Secuencias = new List<Secuencias>();
-
-            var jsonFilePath = "Data/secuencias.json";
-            var jsonString = System.IO.File.ReadAllText(jsonFilePath);
-            Secuencias = JsonSerializer.Deserialize<List<Secuencias>>(jsonString);
-
+            _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<Secuencias> GetSecuencias() {    
-
-            return Secuencias;
- 
-        }
-
-        public IEnumerable<Secuencias> GetSecuenciasRnc(string rnc, int AmbienteID, int CanalID, int TipoECF)
+        public async Task<IEnumerable<Secuencias>> GetSecuencias(DbType1 ambiente, string rnc, int CanalID, int TipoECF)
         {
-            var response = Secuencias.FindAll(data => data.rnc == rnc && data.AmbienteID == AmbienteID && data.CanalID == CanalID && (TipoECF != 0 ? data.TipoECF == TipoECF: true));
-            return response;
+            switch (ambiente)
+            {
+                case DbType1.Produccion:
+                    return await this._unitOfWork.PruebaRepositorio.Getsecuencia(a => a.Rnc == rnc && a.CanalID == CanalID && (TipoECF != 0 ? a.TipoECF == TipoECF : true));
+                case DbType1.PreCertificacion:
+                    return await this._unitOfWork.PruebaRepositorioBlue.Getsecuencia(a => a.Rnc == rnc && a.CanalID == CanalID && (TipoECF != 0 ? a.TipoECF == TipoECF : true));
+                default:
+                    return await this._unitOfWork.PruebaRepositorio.Getsecuencia(a => a.Rnc == rnc && a.CanalID == CanalID && (TipoECF != 0 ? a.TipoECF == TipoECF : true));
+            }
         }
     }
+    public enum DbType1
+    {
+        Produccion = 1,
+        PreCertificacion = 2,
+        Certificacion = 3,
+    }
 }
+

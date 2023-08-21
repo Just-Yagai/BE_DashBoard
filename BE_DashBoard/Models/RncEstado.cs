@@ -2,14 +2,15 @@
 {
     public class RncEstado
     {
-        public string rnc { set; get; }
-        public string estado { set; get; }
-        public string autorizadoAFacturar { set; get; }
-        public string autorizadoSolicitarSecuencia { set; get; } 
-        public string esGrandeContribuyente { set; get; }
-        public string identificacion { get; set; }
-        public string fechaRegistro { get; set; }
-        public string fechaActualizacion { get; set; }
+        public int Id { get; set; }
+        public string Rnc { set; get; }
+        public string Estado { set; get; }
+        public string AutorizadoAFacturar { set; get; }
+        public string AutorizadoSolicitarSecuencia { set; get; } 
+        public string EsGrandeContribuyente { set; get; }
+        public string Identificacion { get; set; }
+        public string FechaRegistro { get; set; }
+        public string FechaActualizacion { get; set; }
         public int AmbienteID { set; get; }
         public int CanalID { set; get; }
 
