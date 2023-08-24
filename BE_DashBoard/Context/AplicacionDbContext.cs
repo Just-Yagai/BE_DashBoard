@@ -12,6 +12,8 @@ namespace BE_DashBoard.Context
         {
 
         }
+
+        public DbSet<Marcas> Marcas { get; set; }
         public DbSet<Delegacion> Delegaciones { get; set; }
         public DbSet<Contribuyente> Contribuyente { get; set; }
         public DbSet<TipoCertificacion> TipoCertificacion { get; set; }

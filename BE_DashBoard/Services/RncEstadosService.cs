@@ -20,9 +20,9 @@ namespace BE_DashBoard.Services
             switch (ambiente)
             {
                 case DbType2.Produccion:
-                    return await this._unitOfWork.PruebaRepositorio.GetRncEstado(a => a.Rnc == rnc && a.CanalID == canal);
+                    return await this._unitOfWork.PruebaRepositorio.GetRncEstado(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
                 case DbType2.PreCertificacion:
-                    return await this._unitOfWork.PruebaRepositorioBlue.GetRncEstado(a => a.Rnc == rnc && a.CanalID == canal);
+                    return await this._unitOfWork.PruebaRepositorioBlue.GetRncEstado(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
                 default:
                     return await this._unitOfWork.PruebaRepositorio.GetRncEstado(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
             }

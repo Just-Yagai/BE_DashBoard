@@ -2,12 +2,45 @@
 using BE_DashBoard.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+using static BE_DashBoard.Services.RncEstadosService;
 
 namespace BE_DashBoard.Services
 {
     public class MarcasService : IMarcasService
     {
-        private readonly List<Marcas> marcas;
+        private readonly IUnitOfWork _unitOfWork;
+
+        public MarcasService(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
+        public async Task<IEnumerable<Marcas>> GetMarcasBy(DbType3 ambiente, string rnc, int canal)
+        {
+
+            switch (ambiente)
+            {
+                case DbType3.Produccion:
+                    return await this._unitOfWork.PruebaRepositorio.GetMarcas(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
+                case DbType3.PreCertificacion:
+                    return await this._unitOfWork.PruebaRepositorioBlue.GetMarcas(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
+                default:
+                    return await this._unitOfWork.PruebaRepositorio.GetMarcas(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
+            }
+
+        }
+
+        public enum DbType3
+        {
+            Produccion = 1,
+            PreCertificacion = 2,
+            Certificacion = 3,
+        }
+
+
+
+
+        /*private readonly List<Marcas> marcas;
         public MarcasService()
         {
             marcas = new List<Marcas>();
@@ -47,6 +80,8 @@ namespace BE_DashBoard.Services
 
             return new OkResult();
 
-        }
+        }*/
+
     }
 }
+

@@ -19,11 +19,11 @@ namespace BE_DashBoard.Services
             switch (ambiente)
             {
                 case DbType1.Produccion:
-                    return await this._unitOfWork.PruebaRepositorio.Getsecuencia(a => a.Rnc == rnc && a.CanalID == CanalID && (TipoECF != 0 ? a.TipoECF == TipoECF : true));
+                    return await this._unitOfWork.PruebaRepositorio.Getsecuencia(a => a.Rnc == rnc && a.CanalID == CanalID && a.AmbienteID == (int)ambiente && (TipoECF != 0 ? a.TipoECF == TipoECF : true));
                 case DbType1.PreCertificacion:
-                    return await this._unitOfWork.PruebaRepositorioBlue.Getsecuencia(a => a.Rnc == rnc && a.CanalID == CanalID && (TipoECF != 0 ? a.TipoECF == TipoECF : true));
+                    return await this._unitOfWork.PruebaRepositorioBlue.Getsecuencia(a => a.Rnc == rnc && a.CanalID == CanalID && a.AmbienteID == (int)ambiente && (TipoECF != 0 ? a.TipoECF == TipoECF : true));
                 default:
-                    return await this._unitOfWork.PruebaRepositorio.Getsecuencia(a => a.Rnc == rnc && a.CanalID == CanalID && (TipoECF != 0 ? a.TipoECF == TipoECF : true));
+                    return await this._unitOfWork.PruebaRepositorio.Getsecuencia(a => a.Rnc == rnc && a.CanalID == CanalID && a.AmbienteID == (int)ambiente && (TipoECF != 0 ? a.TipoECF == TipoECF : true));
             }
         }
     }

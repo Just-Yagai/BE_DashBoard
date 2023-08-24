@@ -10,6 +10,8 @@ namespace BE_DashBoard.Context
         {
 
         }
+
+        public DbSet<Marcas> Marcas { get; set; }
         public DbSet<Delegacion> Delegaciones { get; set; }
         public DbSet<Secuencias> Secuencias { get; set; }
         public DbSet<RncEstado> RncEstados { get; set; }

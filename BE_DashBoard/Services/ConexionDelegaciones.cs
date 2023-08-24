@@ -18,9 +18,9 @@ namespace BE_DashBoard.Services
             switch (ambiente)
             {
                 case DbType.Produccion:
-                    return await this._unitOfWork.PruebaRepositorio.GetDelegaciones(a => a.Rnc == rnc && a.CanalID == canal);
+                    return await this._unitOfWork.PruebaRepositorio.GetDelegaciones(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
                 case DbType.PreCertificacion:
-                    return await this._unitOfWork.PruebaRepositorioBlue.GetDelegaciones(a => a.Rnc == rnc && a.CanalID == canal );
+                    return await this._unitOfWork.PruebaRepositorioBlue.GetDelegaciones(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
                 default:
                     return await this._unitOfWork.PruebaRepositorio.GetDelegaciones(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
             }

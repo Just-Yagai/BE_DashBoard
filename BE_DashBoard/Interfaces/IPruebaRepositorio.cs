@@ -5,6 +5,7 @@ namespace BE_DashBoard.Interfaces
 {
     public interface IPruebaRepositorio
     {
+        Task<IEnumerable<Marcas>> GetMarcas(Expression<Func<Marcas, bool>> expresion);
         Task<IEnumerable<Delegacion>> GetDelegaciones(Expression<Func<Delegacion, bool>> expresion);
         Task<IEnumerable<Secuencias>> Getsecuencia(Expression<Func<Secuencias, bool>> expresion);
         Task<IEnumerable<RncEstado>> GetRncEstado(Expression<Func<RncEstado, bool>> expresion);

@@ -42,6 +42,12 @@ namespace BE_DashBoard.Repositorio
         {
             return _dbcontextblue.Contribuyente.Include(c => c.TiposCertificacion);
         }
+
+        public async Task<IEnumerable<Marcas>> GetMarcas(Expression<Func<Marcas, bool>> expresion)
+        {
+            var ListarDatos = await _dbcontextblue.Marcas.Where(expresion).AsNoTracking().ToListAsync();
+            return ListarDatos;
+        }
     }
 }
 
