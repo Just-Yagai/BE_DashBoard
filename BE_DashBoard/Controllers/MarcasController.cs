@@ -1,11 +1,6 @@
 ﻿using BE_DashBoard.Interfaces;
-using BE_DashBoard.Models;
-using BE_DashBoard.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
-using static BE_DashBoard.Services.MarcasService;
-
+using static BE_DashBoard.ClaseEnumerable.AmbienteEnum;
 
 namespace BE_DashBoard.Controllers
 {
@@ -24,7 +19,7 @@ namespace BE_DashBoard.Controllers
         [Route("ObtenerMarca")]
         public async Task<IActionResult> Getmarcas(int ambiente, string rnc, int canal)
         {
-            var Marca = await _marcasservice.GetMarcasBy((DbType3)ambiente, rnc, canal);
+            var Marca = await _marcasservice.GetMarcasBy((DbType)ambiente, rnc, canal);
             return Ok(Marca);
         }
 

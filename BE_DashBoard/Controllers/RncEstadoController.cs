@@ -1,9 +1,6 @@
 ﻿using BE_DashBoard.Interfaces;
-using BE_DashBoard.Models;
-using BE_DashBoard.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using static BE_DashBoard.Services.RncEstadosService;
+using static BE_DashBoard.ClaseEnumerable.AmbienteEnum;
 
 namespace BE_DashBoard.Controllers
 {
@@ -19,10 +16,10 @@ namespace BE_DashBoard.Controllers
 
         [HttpGet]
         [Route("ObtenerRncEstado")]
-        public async Task<IActionResult> GetSecuencia(int ambiente, string rnc, int CanalID)
+        public async Task<IActionResult> GetRncEstado(int ambiente, string rnc, int CanalID)
         {
-            var secuencia = await _rncestadoservice.GetRncEstado((DbType2)ambiente, rnc, CanalID);
-            return Ok(secuencia);
+            var RncEstado = await _rncestadoservice.GetRncEstado((DbType)ambiente, rnc, CanalID);
+            return Ok(RncEstado);
         }
     }
 }

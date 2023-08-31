@@ -12,7 +12,7 @@
         public string FechaRegistro { get; set; }
         public string FechaActualizacion { get; set; }
         public int AmbienteID { set; get; }
-        public int CanalID { set; get; }
+        public int CanalID { set; get; } //= 0;
 
     }
 }

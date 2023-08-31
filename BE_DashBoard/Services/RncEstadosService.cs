@@ -1,8 +1,7 @@
-﻿using BE_DashBoard.Interfaces;
+﻿using BE_DashBoard.ClaseEnumerable;
+using BE_DashBoard.Interfaces;
 using BE_DashBoard.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Data;
-using System.Text.Json;
+using static BE_DashBoard.ClaseEnumerable.AmbienteEnum;
 
 namespace BE_DashBoard.Services
 {
@@ -15,26 +14,18 @@ namespace BE_DashBoard.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<RncEstado>> GetRncEstado(DbType2 ambiente, string rnc, int canal)
+        public async Task<IEnumerable<RncEstado>> GetRncEstado(AmbienteEnum.DbType ambiente, string rnc, int canal)
         {
             switch (ambiente)
             {
-                case DbType2.Produccion:
+                case DbType.Produccion:
                     return await this._unitOfWork.PruebaRepositorio.GetRncEstado(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
-                case DbType2.PreCertificacion:
+                case DbType.PreCertificacion:
                     return await this._unitOfWork.PruebaRepositorioBlue.GetRncEstado(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
                 default:
                     return await this._unitOfWork.PruebaRepositorio.GetRncEstado(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
             }
         }
-
-        public enum DbType2
-        {
-            Produccion = 1,
-            PreCertificacion = 2,
-            Certificacion = 3,
-        }
-
 
         /*
         public readonly List<RncEstado> rncEstado;

@@ -1,6 +1,7 @@
 ﻿using BE_DashBoard.Context;
 using BE_DashBoard.Interfaces;
 using BE_DashBoard.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Linq.Expressions;
@@ -22,10 +23,27 @@ namespace BE_DashBoard.Repositorio
             return ListarDatos;
         }
 
-        public async Task<IEnumerable<Secuencias>> Getsecuencia(Expression<Func<Secuencias, bool>> expresion)
+        public async Task<PageResult<Secuencias>> Getsecuencia(Expression<Func<Secuencias, bool>> expresion, int pagesNumber, int pagesSize)
         {
-            var ListarDatos = await _dbcontext.Secuencias.Where(expresion).AsNoTracking().ToListAsync();
-            return ListarDatos;
+            var offsellrow = pagesSize * (pagesNumber - 1);
+            var cantidad = await _dbcontext.Secuencias.CountAsync(expresion);
+
+            var ListarDatos = await _dbcontext.Secuencias.Where(expresion)
+                .Skip(offsellrow)
+                .Take(pagesSize)
+                .AsNoTracking()
+                .ToListAsync();
+
+            return new PageResult<Secuencias>
+            {
+                Result = ListarDatos,
+                Paginacion = new Paginacion
+                {
+                    NumeroPagina = pagesNumber,
+                    SizePagina = pagesSize,
+                    TotalElementos = cantidad
+                }
+            };
         }
 
         public async Task<IEnumerable<RncEstado>> GetRncEstado(Expression<Func<RncEstado, bool>> expresion)
@@ -50,5 +68,6 @@ namespace BE_DashBoard.Repositorio
             var ListarDatos = await _dbcontext.Marcas.Where(expresion).AsNoTracking().ToListAsync();
             return ListarDatos;
         }
+
     }
 }

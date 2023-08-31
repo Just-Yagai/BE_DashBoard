@@ -1,6 +1,5 @@
-﻿using BE_DashBoard.Models;
-using Microsoft.AspNetCore.Mvc;
-using static BE_DashBoard.Services.RncEstadosService;
+﻿using BE_DashBoard.ClaseEnumerable;
+using BE_DashBoard.Models;
 
 namespace BE_DashBoard.Interfaces
 {
@@ -10,6 +9,6 @@ namespace BE_DashBoard.Interfaces
         // public IEnumerable<RncEstado> GetRncEstadosBy(string rnc, int AmbienteID, int CanalID);
         //IActionResult UpdaterncEstado(string rnc, RncEstado updateDelegaciones);
 
-        Task<IEnumerable<RncEstado>> GetRncEstado(DbType2 ambiente, string rnc, int canal);
+        Task<IEnumerable<RncEstado>> GetRncEstado(AmbienteEnum.DbType ambiente, string rnc, int canal);
     }
 }

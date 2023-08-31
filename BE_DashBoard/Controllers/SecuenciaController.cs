@@ -1,8 +1,6 @@
 ﻿using BE_DashBoard.Interfaces;
-using BE_DashBoard.Models;
-using BE_DashBoard.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static BE_DashBoard.ClaseEnumerable.AmbienteEnum;
 
 namespace BE_DashBoard.Controllers
 {
@@ -20,7 +18,7 @@ namespace BE_DashBoard.Controllers
         [Route("ObtenerSecuencia")]
         public async Task<IActionResult> GetSecuencia(int ambiente, string rnc, int CanalID, int TipoECF)
         {
-            var secuencia = await _secuencuaservice.GetSecuencias((DbType1)ambiente, rnc, CanalID, TipoECF);
+            var secuencia = await _secuencuaservice.GetSecuencias((DbType)ambiente, rnc, CanalID, TipoECF);
             return Ok(secuencia);
         }
 

@@ -1,5 +1,7 @@
-﻿using BE_DashBoard.Interfaces;
+﻿using BE_DashBoard.ClaseEnumerable;
+using BE_DashBoard.Interfaces;
 using BE_DashBoard.Models;
+using static BE_DashBoard.ClaseEnumerable.AmbienteEnum;
 
 namespace BE_DashBoard.Services
 {
@@ -13,7 +15,7 @@ namespace BE_DashBoard.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<Delegacion>> GetDelegaciones(DbType ambiente, string rnc, int canal)
+        public async Task<IEnumerable<Delegacion>> GetDelegaciones(AmbienteEnum.DbType ambiente, string rnc, int canal)
         {
             switch (ambiente)
             {
@@ -26,16 +28,6 @@ namespace BE_DashBoard.Services
             }
         }
 
-       public Task<IEnumerable<Delegacion>> GetDelegaciones(int ambiente, string rnc, int canal)
-        {
-            throw new NotImplementedException();
-        }
-    }
-    public enum DbType
-    {
-        Produccion = 1,
-        PreCertificacion = 2,
-        Certificacion = 3,
     }
 }
 

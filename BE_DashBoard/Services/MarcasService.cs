@@ -1,8 +1,8 @@
-﻿using BE_DashBoard.Interfaces;
+﻿using BE_DashBoard.ClaseEnumerable;
+using BE_DashBoard.Interfaces;
 using BE_DashBoard.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
-using static BE_DashBoard.Services.RncEstadosService;
+using static BE_DashBoard.ClaseEnumerable.AmbienteEnum;
+
 
 namespace BE_DashBoard.Services
 {
@@ -15,30 +15,20 @@ namespace BE_DashBoard.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<Marcas>> GetMarcasBy(DbType3 ambiente, string rnc, int canal)
+        public async Task<IEnumerable<Marcas>> GetMarcasBy(AmbienteEnum.DbType ambiente, string rnc, int canal)
         {
 
             switch (ambiente)
             {
-                case DbType3.Produccion:
+                case DbType.Produccion:
                     return await this._unitOfWork.PruebaRepositorio.GetMarcas(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
-                case DbType3.PreCertificacion:
+                case DbType.PreCertificacion:
                     return await this._unitOfWork.PruebaRepositorioBlue.GetMarcas(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
                 default:
                     return await this._unitOfWork.PruebaRepositorio.GetMarcas(a => a.Rnc == rnc && a.CanalID == canal && a.AmbienteID == (int)ambiente);
             }
 
         }
-
-        public enum DbType3
-        {
-            Produccion = 1,
-            PreCertificacion = 2,
-            Certificacion = 3,
-        }
-
-
-
 
         /*private readonly List<Marcas> marcas;
         public MarcasService()
