@@ -5,6 +5,6 @@ namespace BE_DashBoard.Interfaces
 {
     public interface ISecuencuasService
     {
-        Task<IEnumerable<Secuencias>> GetSecuencias(AmbienteEnum.DbType ambiente, string rnc, int CanalID, int TipoECF);
+        Task<PageResult<Secuencias>> GetSecuencias(AmbienteEnum.DbType ambiente, string rnc, int CanalID, int TipoECF, int pageNumber, int pageSize);
     }
 }

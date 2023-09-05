@@ -6,10 +6,17 @@
      public int SizePagina { get; set;} 
      public int TotalElementos {get; set;}
      public int TotalPaginas {
-            get 
+            get
             {
-                return TotalElementos / SizePagina;
-            } 
+                if (SizePagina > 0)
+                {
+                    return (int)Math.Ceiling((double)TotalElementos / SizePagina);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }

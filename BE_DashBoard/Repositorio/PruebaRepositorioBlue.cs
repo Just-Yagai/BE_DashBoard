@@ -20,10 +20,27 @@ namespace BE_DashBoard.Repositorio
             return ListarDatos;
         }
 
-        public async Task<IEnumerable<Secuencias>> Getsecuencia(Expression<Func<Secuencias, bool>> expresion)
+        public async Task<PageResult<Secuencias>> Getsecuencia(Expression<Func<Secuencias, bool>> expresion, int pagesNumber, int pagesSize)
         {
-            var ListarDatos = await _dbcontextblue.Secuencias.Where(expresion).AsNoTracking().ToListAsync();
-            return ListarDatos;
+            var offsellrow = pagesSize * (pagesNumber - 1);
+            var cantidad = await _dbcontextblue.Secuencias.CountAsync(expresion);
+
+            var ListarDatos = await _dbcontextblue.Secuencias.Where(expresion)
+                .Skip(offsellrow)
+                .Take(pagesSize)
+                .AsNoTracking()
+                .ToListAsync();
+
+            return new PageResult<Secuencias>
+            {
+                Result = ListarDatos,
+                Paginacion = new Paginacion
+                {
+                    NumeroPagina = pagesNumber,
+                    SizePagina = pagesSize,
+                    TotalElementos = cantidad
+                }
+            };
         }
 
         public async Task<IEnumerable<RncEstado>> GetRncEstado(Expression<Func<RncEstado, bool>> expresion)
