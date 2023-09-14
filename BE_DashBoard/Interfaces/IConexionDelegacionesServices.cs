@@ -7,5 +7,6 @@ namespace BE_DashBoard.Interfaces
     public interface IConexionDelegacionesServices
     {
         Task<IEnumerable<Delegacion>> GetDelegaciones(AmbienteEnum.DbType ambiente, string rnc, int canal);
+        Task<Delegacion> ActualizarDelegaciones(string rnc, Delegacion updatedelegaciones, int ambiente);
     }
 }

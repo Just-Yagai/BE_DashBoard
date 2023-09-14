@@ -71,6 +71,7 @@ builder.Services.AddScoped<ICredenciales, CredencialesServices>();
 builder.Services.AddScoped<ITokenService, TokenServices>();
 builder.Services.AddScoped<IConexionDelegacionesServices, ConexionDelegaciones>();
 builder.Services.AddScoped<IConexionContribuyenteService, ContribuyentesService>();
+builder.Services.AddScoped<ITipoecfService,TipoecfServices >();
 //Repositorio
 //builder.Services.AddScoped<IPruebaRepositorio, PruebaRepositorio>();
 //builder.Services.AddScoped<IPruebaRepositorio, PruebaRepositorioBlue>();

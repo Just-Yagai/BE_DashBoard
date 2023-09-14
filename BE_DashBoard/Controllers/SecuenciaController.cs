@@ -16,7 +16,7 @@ namespace BE_DashBoard.Controllers
 
         [HttpGet]
         [Route("ObtenerSecuencia")]
-        public async Task<IActionResult> GetSecuencia(int ambiente, string rnc, int CanalID, int TipoECF, int pageNumber = 1, int pageSize = 5)
+        public async Task<IActionResult> GetSecuencia(int ambiente, string rnc, int CanalID, int TipoECF, int pageNumber, int pageSize )
         {
             var secuencia = await _secuencuaservice.GetSecuencias((DbType)ambiente, rnc, CanalID, TipoECF, pageNumber, pageSize);
             return Ok(secuencia);

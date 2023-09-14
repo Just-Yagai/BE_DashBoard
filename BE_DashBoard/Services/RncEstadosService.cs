@@ -1,6 +1,9 @@
 ﻿using BE_DashBoard.ClaseEnumerable;
+using BE_DashBoard.Context;
 using BE_DashBoard.Interfaces;
 using BE_DashBoard.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using static BE_DashBoard.ClaseEnumerable.AmbienteEnum;
 
 namespace BE_DashBoard.Services
@@ -8,10 +11,14 @@ namespace BE_DashBoard.Services
     public class RncEstadosService : IrncEstadoService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public RncEstadosService(IUnitOfWork unitOfWork)
+        private readonly AplicacionDbContext _dbcontext;
+        private readonly AplicacionDbContextBlue _dbcontextBlue;
+            
+        public RncEstadosService(IUnitOfWork unitOfWork, AplicacionDbContext dbcontext, AplicacionDbContextBlue dbcontextBlue)
         {
             _unitOfWork = unitOfWork;
+            _dbcontext = dbcontext;
+            _dbcontextBlue = dbcontextBlue;
         }
 
         public async Task<IEnumerable<RncEstado>> GetRncEstado(AmbienteEnum.DbType ambiente, string rnc, int canal)
@@ -27,51 +34,73 @@ namespace BE_DashBoard.Services
             }
         }
 
-        /*
-        public readonly List<RncEstado> rncEstado;
 
-
-        public RncEstadosService()
+        public async Task<RncEstado> ActualizarRncEstado(string Rnc, RncEstado updaterncEstado, int ambiente)
         {
-            rncEstado = new List<RncEstado>();
-
-            var jsonpath = "Data/rnc-estado.json";
-            var conver = System.IO.File.ReadAllText(jsonpath);
-            rncEstado = JsonSerializer.Deserialize<List<RncEstado>>(conver);
-
-        }
-        public IEnumerable<RncEstado> GetRncEstados()
-        {
-            return rncEstado;
-        }
-
-        public IEnumerable<RncEstado> GetRncEstadosBy(string rnc, int AmbienteID, int CanalID)
-        {
-            var response = rncEstado.FindAll(data => data.rnc == rnc && data.AmbienteID == AmbienteID && data.CanalID == CanalID);
-            return response;
-        }
-
-        public IActionResult UpdaterncEstado(string rnc, RncEstado updaterncEstado)
-        {
-            var rncEstadoUpdate = rncEstado.FirstOrDefault(data => data.rnc == rnc);
-
-            if (rncEstadoUpdate == null)
+            try
             {
-                return new NoContentResult();
+                if (ambiente == (int)DbType.Produccion)
+                {
+                    var rncEstadoUpdate = await _dbcontext.RncEstados.FirstOrDefaultAsync(r => r.Rnc == Rnc);
+
+                    if (rncEstadoUpdate == null)
+                    {
+                        return null; // Devuelve null si no se encuentra
+                    }
+
+                    rncEstadoUpdate.Estado = updaterncEstado.Estado;
+                    rncEstadoUpdate.AutorizadoAFacturar = updaterncEstado.AutorizadoAFacturar;
+                    rncEstadoUpdate.AutorizadoSolicitarSecuencia = updaterncEstado.AutorizadoSolicitarSecuencia;
+                    rncEstadoUpdate.EsGrandeContribuyente = updaterncEstado.EsGrandeContribuyente;
+
+                    await _dbcontext.SaveChangesAsync();
+                    return rncEstadoUpdate;
+                }
+                else if (ambiente == (int)DbType.PreCertificacion)
+                {
+                    var rncEstadoUpdate = await _dbcontextBlue.RncEstados.FirstOrDefaultAsync(r => r.Rnc == Rnc);
+
+                    if (rncEstadoUpdate == null)
+                    {
+                        return null; // Devuelve null si no se encuentra
+                    }
+
+                    rncEstadoUpdate.Estado = updaterncEstado.Estado;
+                    rncEstadoUpdate.AutorizadoAFacturar = updaterncEstado.AutorizadoAFacturar;
+                    rncEstadoUpdate.AutorizadoSolicitarSecuencia = updaterncEstado.AutorizadoSolicitarSecuencia;
+                    rncEstadoUpdate.EsGrandeContribuyente = updaterncEstado.EsGrandeContribuyente;
+
+                    await _dbcontextBlue.SaveChangesAsync();
+                    return rncEstadoUpdate;
+                }
+                else if (ambiente == (int)DbType.Certificacion)
+                {
+                    var rncEstadoUpdate = await _dbcontext.RncEstados.FirstOrDefaultAsync(r => r.Rnc == Rnc);
+
+                    if (rncEstadoUpdate == null)
+                    {
+                        return null; // Devuelve null si no se encuentra
+                    }
+
+                    rncEstadoUpdate.Estado = updaterncEstado.Estado;
+                    rncEstadoUpdate.AutorizadoAFacturar = updaterncEstado.AutorizadoAFacturar;
+                    rncEstadoUpdate.AutorizadoSolicitarSecuencia = updaterncEstado.AutorizadoSolicitarSecuencia;
+                    rncEstadoUpdate.EsGrandeContribuyente = updaterncEstado.EsGrandeContribuyente;
+
+                    await _dbcontext.SaveChangesAsync();
+                    return rncEstadoUpdate;
+                }
+                else
+                {
+                    return null; // Devuelve null si el ambiente no es válido
+                }
             }
-
-            rncEstadoUpdate.estado = updaterncEstado.estado;
-            rncEstadoUpdate.autorizadoAFacturar = updaterncEstado.autorizadoAFacturar;
-            rncEstadoUpdate.autorizadoSolicitarSecuencia = updaterncEstado.autorizadoSolicitarSecuencia;
-            rncEstadoUpdate.esGrandeContribuyente = updaterncEstado.esGrandeContribuyente;
-            
-
-            string jsonFilePath = "Data/rnc-estado.json";
-            string jsonString = JsonSerializer.Serialize(rncEstado);
-            System.IO.File.WriteAllText(jsonFilePath, jsonString);
-
-            return new OkResult();
-        }*/
-
+            catch (Exception ex)
+            {
+                // Maneja la excepción según tus necesidades.
+                throw ex;
+            }
+        }
     }
-}
+ }
+

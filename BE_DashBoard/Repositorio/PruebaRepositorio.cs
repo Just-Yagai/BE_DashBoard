@@ -25,10 +25,11 @@ namespace BE_DashBoard.Repositorio
 
         public async Task<PageResult<Secuencias>> Getsecuencia(Expression<Func<Secuencias, bool>> expresion, int pagesNumber, int pagesSize)
         {
-            var offsellrow = pagesSize * (pagesNumber - 1);
+            var offsellrow = (pagesNumber - 1) * pagesSize;
             var cantidad = await _dbcontext.Secuencias.CountAsync(expresion);
 
-            var ListarDatos = await _dbcontext.Secuencias.Where(expresion)
+            var ListarDatos = await _dbcontext.Secuencias
+                .Where(expresion)
                 .Skip(offsellrow)
                 .Take(pagesSize)
                 .AsNoTracking()

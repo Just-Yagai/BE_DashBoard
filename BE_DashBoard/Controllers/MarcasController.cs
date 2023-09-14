@@ -1,5 +1,8 @@
-﻿using BE_DashBoard.Interfaces;
+﻿using BE_DashBoard.Context;
+using BE_DashBoard.Interfaces;
+using BE_DashBoard.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using static BE_DashBoard.ClaseEnumerable.AmbienteEnum;
 
 namespace BE_DashBoard.Controllers
@@ -10,9 +13,11 @@ namespace BE_DashBoard.Controllers
     {
 
         private readonly IMarcasService _marcasservice;
-        public MarcasController(IMarcasService marcasservice)
+        private readonly AplicacionDbContextBlue _dbcontext;
+        public MarcasController(IMarcasService marcasservice, AplicacionDbContextBlue dbcontext)
         {
            _marcasservice = marcasservice;
+            _dbcontext = dbcontext;
         }
 
         [HttpGet]
@@ -23,7 +28,37 @@ namespace BE_DashBoard.Controllers
             return Ok(Marca);
         }
 
+        [HttpPut]
+        [Route("ActualizarMarcas/{Rnc}")]
+        public async Task<IActionResult> Put(string Rnc, Marcas updateMarcas)
+        {
+            try
+            {
+                string claveBusqueda = Rnc + "" + updateMarcas.Tipo;
 
+                if (Rnc != updateMarcas.Rnc)
+                {
+                    return BadRequest();
+                }
+
+                // Buscar la entidad por la clave primaria
+                var MarcaUpdate = await _dbcontext.Marcas.FirstOrDefaultAsync(r => (r.Rnc + "" + r.Tipo) == claveBusqueda);
+
+                if (MarcaUpdate == null)
+                {
+                    return NotFound();
+                }
+                MarcaUpdate.Estado = updateMarcas.Estado;
+
+                await _dbcontext.SaveChangesAsync();
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
 
         /* private readonly IMarcasService _marcasService;

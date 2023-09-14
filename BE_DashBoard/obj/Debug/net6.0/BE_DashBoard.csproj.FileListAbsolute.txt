@@ -239,3 +239,4 @@ C:\Users\Usuario\OneDrive\Escritorio\prueba en angular\BE_DashBoard\BE_DashBoard
 C:\Users\Usuario\OneDrive\Escritorio\prueba en angular\BE_DashBoard\BE_DashBoard\obj\Debug\net6.0\BE_DashBoard.pdb
 C:\Users\Usuario\OneDrive\Escritorio\prueba en angular\BE_DashBoard\BE_DashBoard\obj\Debug\net6.0\BE_DashBoard.genruntimeconfig.cache
 C:\Users\Usuario\OneDrive\Escritorio\prueba en angular\BE_DashBoard\BE_DashBoard\obj\Debug\net6.0\ref\BE_DashBoard.dll
+C:\Users\fpimenteld\Desktop\BE_DashBoard\BE_DashBoard\bin\Debug\net6.0\Data\tipoecf.json
