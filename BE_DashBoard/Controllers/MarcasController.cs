@@ -30,70 +30,24 @@ namespace BE_DashBoard.Controllers
 
         [HttpPut]
         [Route("ActualizarMarcas/{Rnc}")]
-        public async Task<IActionResult> Put(string Rnc, Marcas updateMarcas)
+        public async Task<IActionResult> Put(string Rnc, [FromBody] Marcas updateMarcas, int ambiente)
         {
             try
             {
-                string claveBusqueda = Rnc + "" + updateMarcas.Tipo;
+                var result = await _marcasservice.ActualizarMarcas(Rnc, updateMarcas, ambiente);
 
-                if (Rnc != updateMarcas.Rnc)
+                if (result == null)
                 {
-                    return BadRequest();
+                    return NotFound(); // Devuelve NotFound si no se encuentra el elemento o ambiente no es válido
                 }
 
-                // Buscar la entidad por la clave primaria
-                var MarcaUpdate = await _dbcontext.Marcas.FirstOrDefaultAsync(r => (r.Rnc + "" + r.Tipo) == claveBusqueda);
-
-                if (MarcaUpdate == null)
-                {
-                    return NotFound();
-                }
-                MarcaUpdate.Estado = updateMarcas.Estado;
-
-                await _dbcontext.SaveChangesAsync();
-
-                return NoContent();
+                return NoContent(); // Devuelve NoContent si se actualiza con éxito
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
-
-
-        /* private readonly IMarcasService _marcasService;
-
-         public MarcasController(IMarcasService marcasService)
-         {
-             _marcasService = marcasService;
-         }
-
-         [HttpGet]
-         [Route("ObtenerMarcas")]
-         public IEnumerable <Marcas> Get()
-         {
-             return _marcasService.GetMarcas();
-         }
-
-         [HttpGet]
-         [Route("ObtenerMarcasBy")]
-         public IActionResult Get(string rnc, int AmbienteID, int CanalID)
-         {
-             var marcasFiltradas = _marcasService.GetMarcasBy(rnc, AmbienteID, CanalID);
-             if(marcasFiltradas == null || !marcasFiltradas.Any())
-             {
-                 return NoContent();           
-             }
-             return Ok(marcasFiltradas);    
-         }
-
-         [HttpPut]
-         [Route("ActualizarMarcas/{rnc}")]
-         public IActionResult Put(string rnc, [FromBody]Marcas updateMarcas)
-         {
-             IActionResult resultado = _marcasService.UpdateMarcas(rnc, updateMarcas);
-
-             return resultado;
-         }*/
     }
 }
+

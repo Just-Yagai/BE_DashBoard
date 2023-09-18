@@ -8,6 +8,6 @@ namespace BE_DashBoard.Interfaces
     {
         //IEnumerable<Marcas> GetMarcas();
         Task<IEnumerable<Marcas>> GetMarcasBy(AmbienteEnum.DbType ambiente, string rnc, int CanalID);
-       // IActionResult UpdateMarcas(string rnc, Marcas updateMarcas);
+        Task<Marcas> ActualizarMarcas(string Rnc, Marcas updateMarcas, int ambiente);
     }
 }
